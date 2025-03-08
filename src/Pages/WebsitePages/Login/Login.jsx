@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useContext, useEffect, useState } from "react";
+import passwordEye from "@/assets/icons/password-eye-icon.svg";
 import Breadcrumb from "@/Components/Shared/Breadcrumb/Breadcrumb";
+import { UserContext } from "@/Utilities/Contexts/UserContextProvider";
+import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import axios from "axios";
+import { useContext, useState } from "react";
 import toast from "react-hot-toast";
-import passwordEye from "@/assets/icons/password-eye-icon.svg";
-import { UserContext } from "@/Utilities/Contexts/UserContextProvider";
 
 const Login = () => {
   const { setUserID } = useContext(UserContext);
@@ -41,7 +41,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5070/api/v1/SignUP",
+        "https://api.abcpabnabd.com/api/v1/SignUP",
         formData
       );
 
@@ -89,7 +89,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5070/api/v1/Login",
+        "https://api.abcpabnabd.com/api/v1/Login",
         loginFormData
       );
 

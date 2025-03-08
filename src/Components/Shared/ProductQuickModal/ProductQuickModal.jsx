@@ -1,6 +1,6 @@
 "use client";
 import { QuickViewContext } from "@/Utilities/Contexts/QuickViewContextProvider";
-import React, { useContext, useEffect } from "react";
+import { useContext } from "react";
 
 const ProductQuickModal = () => {
   const { product } = useContext(QuickViewContext);
@@ -24,7 +24,7 @@ const ProductQuickModal = () => {
             <div className="modal_body">
               <div className="product">
                 <img
-                  src={`http://localhost:5070${product?.productImg}`}
+                  src={`https://api.abcpabnabd.com${product?.productImg}`}
                   alt={product?.productName}
                   className="img-fluid"
                 />

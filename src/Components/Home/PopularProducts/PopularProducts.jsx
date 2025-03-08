@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useContext, useEffect, useState } from "react";
+import { QuickViewContext } from "@/Utilities/Contexts/QuickViewContextProvider";
 import axios from "axios";
 import Link from "next/link";
-import { QuickViewContext } from "@/Utilities/Contexts/QuickViewContextProvider";
+import { useContext, useEffect, useState } from "react";
 
 const PopularProducts = () => {
   const [products, setProducts] = useState([]);
@@ -12,7 +12,7 @@ const PopularProducts = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       const response = await axios.get(
-        "http://localhost:5070/api/v1/product-list"
+        "https://api.abcpabnabd.com/api/v1/product-list"
       );
 
       if (response?.data?.status === "success") {
@@ -55,7 +55,7 @@ const PopularProducts = () => {
                       `  <div className="product">
                       <Link href={`/products/${product?._id}`}>
                           <img 
-                            src={`http://localhost:5070${product.productImg}`}
+                            src={`https://api.abcpabnabd.com${product.productImg}`}
                             alt=""
                           />
                       </Link>

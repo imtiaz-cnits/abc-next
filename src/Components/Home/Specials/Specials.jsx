@@ -1,14 +1,13 @@
 "use client";
-import React, { useContext, useEffect, useRef, useState } from "react";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
-import sliderImg1 from "@/assets/img/home/special-slider-img1.webp";
+import { QuickViewContext } from "@/Utilities/Contexts/QuickViewContextProvider";
+import ProgressBar from "@ramonak/react-progress-bar";
 import axios from "axios";
-import { Swiper, SwiperSlide } from "swiper/react";
+import Link from "next/link";
+import { useContext, useEffect, useRef, useState } from "react";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 import "swiper/css";
 import { Autoplay, Navigation } from "swiper/modules";
-import ProgressBar from "@ramonak/react-progress-bar";
-import { QuickViewContext } from "@/Utilities/Contexts/QuickViewContextProvider";
-import Link from "next/link";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 const Specials = () => {
   const [products, setProducts] = useState([]);
@@ -19,7 +18,7 @@ const Specials = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       const response = await axios.get(
-        "http://localhost:5070/api/v1/product-list"
+        "https://api.abcpabnabd.com/api/v1/product-list"
       );
 
       if (response?.data?.status === "success") {
@@ -68,7 +67,7 @@ const Specials = () => {
                     <Link href={`/products/${product?._id}`}>
                           
                             <img
-                              src={`http://localhost:5070${product?.productImg}`}
+                              src={`https://api.abcpabnabd.com${product?.productImg}`}
                               alt=""
                             />
                                                 </Link>

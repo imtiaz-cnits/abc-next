@@ -1,12 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import logo from "@/assets/img/abc-logo-icon.svg";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import DashboardActiveLink from "../DashboardActiveLink/DashboardActiveLink";
 import DashboardSubmenu from "../DashboardSubmenu/DashboardSubmenu";
-import Navigate from "@/Components/Shared/Navigate/Navigate";
 
 const DashboardSidebar = () => {
   const path = usePathname();
@@ -25,7 +24,7 @@ const DashboardSidebar = () => {
   const handleLogout = async () => {
     try {
       // Make a POST request to the logout endpoint
-      const response = await fetch("http://localhost:5070/api/v1/Logout", {
+      const response = await fetch("https://api.abcpabnabd.com/api/v1/Logout", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

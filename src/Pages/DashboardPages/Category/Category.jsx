@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
-import CategoryRow from "./CategoryRow/CategoryRow";
 import DashboardPagination from "@/Components/Dashboard/DashboardPagination/DashboardPagination";
-import { toast } from "react-hot-toast";
 import axios from "axios";
-import Swal from "sweetalert2";
+import { useEffect, useRef, useState } from "react";
+import { toast } from "react-hot-toast";
 import { FaXmark } from "react-icons/fa6";
+import Swal from "sweetalert2";
+import CategoryRow from "./CategoryRow/CategoryRow";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faSort } from "@fortawesome/free-solid-svg-icons";
 
@@ -44,7 +44,7 @@ const Category = () => {
     const fetchCategory = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5070/api/v1/category"
+          "https://api.abcpabnabd.com/api/v1/category"
         );
 
         setCategories(response.data.data || []);
@@ -156,7 +156,7 @@ const Category = () => {
       if (isEditing && selectedCategory) {
         // Update existing category
         response = await axios.put(
-          `http://localhost:5070/api/v1/category/${selectedCategory._id}`,
+          `https://api.abcpabnabd.com/api/v1/category/${selectedCategory._id}`,
           formData,
           {
             headers: {
@@ -168,7 +168,7 @@ const Category = () => {
       } else {
         // Add new category
         response = await axios.post(
-          "http://localhost:5070/api/v1/category",
+          "https://api.abcpabnabd.com/api/v1/category",
           formData,
           {
             headers: {
@@ -228,7 +228,7 @@ const Category = () => {
     try {
       // Send PUT request to update the category
       const { data } = await axios.put(
-        `http://localhost:5070/api/v1/category/${selectedCategory._id}`,
+        `https://api.abcpabnabd.com/api/v1/category/${selectedCategory._id}`,
         formData,
         {
           headers: {
@@ -271,7 +271,7 @@ const Category = () => {
 
     try {
       const response = await axios.delete(
-        `http://localhost:5070/api/v1/category/${categoryId}`,
+        `https://api.abcpabnabd.com/api/v1/category/${categoryId}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -456,7 +456,7 @@ const Category = () => {
                           <div className="img-box">
                             {selectedCategory?.categoryImg && (
                               <img
-                                src={`http://localhost:5070${selectedCategory.categoryImg}`}
+                                src={`https://api.abcpabnabd.com${selectedCategory.categoryImg}`}
                                 alt="Category"
                                 width="100"
                               />
@@ -560,7 +560,7 @@ const Category = () => {
                           <div className="img-box">
                             {selectedCategory?.categoryImg && (
                               <img
-                                src={`http://localhost:5070/${selectedCategory.categoryImg}`}
+                                src={`https://api.abcpabnabd.com/${selectedCategory.categoryImg}`}
                                 alt="Category"
                                 width="100"
                               />

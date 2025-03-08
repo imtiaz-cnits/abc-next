@@ -1,19 +1,19 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { useEffect, useState } from "react";
 import "swiper/css";
 import "swiper/css/autoplay";
 import "swiper/css/navigation";
 import { Autoplay } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 const Brands = () => {
   const [brands, setBrands] = useState([]);
 
   useEffect(() => {
     const fetchBrands = async () => {
-      const response = await axios.get("http://localhost:5070/api/v1/brands");
+      const response = await axios.get("https://api.abcpabnabd.com/api/v1/brands");
 
       if (response?.data?.status === "success") {
         setBrands(response?.data?.data);
@@ -54,7 +54,7 @@ const Brands = () => {
                 <SwiperSlide key={idx}>
                   <div className="item">
                     <img
-                      src={`http://localhost:5070${brand.brandImg}`}
+                      src={`https://api.abcpabnabd.com${brand.brandImg}`}
                       alt=""
                     />
                   </div>

@@ -1,13 +1,12 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
-import SubCategoryRow from "./SubCategoryRow/SubCategoryRow";
 import DashboardPagination from "@/Components/Dashboard/DashboardPagination/DashboardPagination";
-import { toast } from "react-hot-toast";
 import axios from "axios";
-import Swal from "sweetalert2";
-import Select from "react-select";
+import { useEffect, useRef, useState } from "react";
+import { toast } from "react-hot-toast";
 import { FaXmark } from "react-icons/fa6";
+import Select from "react-select";
+import Swal from "sweetalert2";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faSort } from "@fortawesome/free-solid-svg-icons";
 
@@ -45,7 +44,7 @@ const SubCategory = () => {
     const fetchCategories = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5070/api/v1/category"
+          "https://api.abcpabnabd.com/api/v1/category"
         );
         setCategories(response.data.data); // Assuming categories are returned in `data.data`
       } catch (error) {
@@ -60,7 +59,7 @@ const SubCategory = () => {
     const fetchSubCategory = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5070/api/v1/sub-category"
+          "https://api.abcpabnabd.com/api/v1/sub-category"
         );
 
         setSubCategories(response.data.data || []);
@@ -202,14 +201,14 @@ const SubCategory = () => {
       if (isEditing) {
         // If editing, send a PUT request
         response = await axios.put(
-          `http://localhost:5070/api/v1/sub-category/${selectedSubCategory._id}`,
+          `https://api.abcpabnabd.com/api/v1/sub-category/${selectedSubCategory._id}`,
           subCategoryData
         );
         toast.success("Sub Category updated successfully!");
       } else {
         // If adding new, send a POST request
         response = await axios.post(
-          "http://localhost:5070/api/v1/sub-category",
+          "https://api.abcpabnabd.com/api/v1/sub-category",
           subCategoryData
         );
         toast.success("Sub Category added successfully!");
@@ -261,7 +260,7 @@ const SubCategory = () => {
 
       // Send PUT request to update the sub category
       const { data } = await axios.put(
-        `http://localhost:5070/api/v1/sub-category/${selectedSubCategory._id}`,
+        `https://api.abcpabnabd.com/api/v1/sub-category/${selectedSubCategory._id}`,
         updatedSubCategoryData
       );
 
@@ -302,7 +301,7 @@ const SubCategory = () => {
 
     try {
       const response = await axios.delete(
-        `http://localhost:5070/api/v1/sub-category/${subCategoryId}`,
+        `https://api.abcpabnabd.com/api/v1/sub-category/${subCategoryId}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,

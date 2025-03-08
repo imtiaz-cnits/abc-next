@@ -79,7 +79,7 @@ const AddProduct = () => {
   useEffect(() => {
     const fetchBrands = async () => {
       try {
-        const response = await axios.get("http://localhost:5070/api/v1/brands");
+        const response = await axios.get("https://api.abcpabnabd.com/api/v1/brands");
         setBrands(response.data.data);
       } catch (error) {
         console.error("Error fetching brands:", error);
@@ -94,7 +94,7 @@ const AddProduct = () => {
     const fetchCategories = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5070/api/v1/category"
+          "https://api.abcpabnabd.com/api/v1/category"
         );
         setCategories(response.data.data); // Assuming categories are returned in `data.data`
       } catch (error) {
@@ -110,7 +110,7 @@ const AddProduct = () => {
     const fetchSubCategory = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5070/api/v1/sub-category"
+          "https://api.abcpabnabd.com/api/v1/sub-category"
         );
         setSubCategories(response.data.data);
       } catch (error) {
@@ -143,7 +143,7 @@ const AddProduct = () => {
         formData.status = brandStatus;
         if (brandImg) formData.brandImg = brandImg;
 
-        url = "http://localhost:5070/api/v1/brands";
+        url = "https://api.abcpabnabd.com/api/v1/brands";
         successMessage = "Brand added successfully!";
         updateState = setBrands;
 
@@ -162,7 +162,7 @@ const AddProduct = () => {
         formData.status = categoryStatus;
         if (categoryImg) formData.categoryImg = categoryImg;
 
-        url = "http://localhost:5070/api/v1/category";
+        url = "https://api.abcpabnabd.com/api/v1/category";
         successMessage = "Category added successfully!";
         updateState = setCategories;
 
@@ -182,7 +182,7 @@ const AddProduct = () => {
         requestData = { subCategoryName, subCategoryStatus, categoryId };
         isFormData = false; // Use JSON for sub-category
 
-        url = "http://localhost:5070/api/v1/sub-category";
+        url = "https://api.abcpabnabd.com/api/v1/sub-category";
         successMessage = "Sub Category added successfully!";
         updateState = setSubCategories;
 
@@ -235,7 +235,7 @@ const AddProduct = () => {
         if (description) formData.append("description", description);
         if (stock) formData.append("stock", stock);
 
-        url = "http://localhost:5070/api/v1/add-product";
+        url = "https://api.abcpabnabd.com/api/v1/add-product";
         successMessage = "Product added successfully!";
         updateState = setProduct;
         break;
@@ -804,7 +804,7 @@ const AddProduct = () => {
                         <div className="img-box">
                           {selectedBrand?.brandImg && (
                             <img
-                              src={`http://localhost:5070/${selectedBrand.brandImg}`}
+                              src={`https://api.abcpabnabd.com/${selectedBrand.brandImg}`}
                               alt="Brand"
                               width="100"
                             />
@@ -896,7 +896,7 @@ const AddProduct = () => {
                         <div className="img-box">
                           {selectedCategory?.categoryImg && (
                             <img
-                              src={`http://localhost:5070/${selectedCategory.categoryImg}`}
+                              src={`https://api.abcpabnabd.com/${selectedCategory.categoryImg}`}
                               alt="Category"
                               width="100"
                             />

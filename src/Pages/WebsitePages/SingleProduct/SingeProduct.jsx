@@ -1,8 +1,8 @@
 "use client";
-import Breadcrumb from "@/Components/Shared/Breadcrumb/Breadcrumb";
-import React, { useEffect, useState } from "react";
 import "@/assets/css/product-single.css";
 import "@/assets/css/vendor/lightslider.css";
+import Breadcrumb from "@/Components/Shared/Breadcrumb/Breadcrumb";
+import { useEffect, useState } from "react";
 import "./SingleProduct.css";
 
 import moreProduct1 from "@/assets/img/product/more-product-img1.webp";
@@ -19,9 +19,9 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { LiaTimesSolid } from "react-icons/lia";
 import { Swiper, SwiperSlide } from "swiper/react";
 
+import axios from "axios";
 import "swiper/css";
 import { FreeMode, Thumbs } from "swiper/modules";
-import axios from "axios";
 
 const SingleProduct = ({ id }) => {
   const [productDetails, setProductDetails] = useState({});
@@ -34,7 +34,7 @@ const SingleProduct = ({ id }) => {
   useEffect(() => {
     const fetchProduct = async () => {
       const response = await axios.get(
-        `http://localhost:5070/api/v1/product-details/${id}`,
+        `https://api.abcpabnabd.com/api/v1/product-details/${id}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -84,7 +84,7 @@ const SingleProduct = ({ id }) => {
                 >
                   {productDetails?.productImgs?.map((img, idx) => (
                     <SwiperSlide key={idx}>
-                      <img src={`http://localhost:5070${img}`} alt="" />
+                      <img src={`https://api.abcpabnabd.com${img}`} alt="" />
                     </SwiperSlide>
                   ))}
                 </Swiper>
@@ -100,7 +100,7 @@ const SingleProduct = ({ id }) => {
                 >
                   {productDetails?.productImgs?.map((img, idx) => (
                     <SwiperSlide key={idx}>
-                      <img src={`http://localhost:5070${img}`} alt="" />
+                      <img src={`https://api.abcpabnabd.com${img}`} alt="" />
                     </SwiperSlide>
                   ))}
                 </Swiper>

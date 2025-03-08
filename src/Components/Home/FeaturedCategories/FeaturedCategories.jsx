@@ -1,15 +1,15 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const FeaturedCategories = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     const fetchCategories = async () => {
-      const response = await axios.get("http://localhost:5070/api/v1/category");
+      const response = await axios.get("https://api.abcpabnabd.com/api/v1/category");
 
       if (response?.data?.status === "success") {
         setCategories(response?.data?.data);
@@ -44,7 +44,7 @@ const FeaturedCategories = () => {
                   </div>
                   <div className="catagories_image">
                     <img
-                      src={`http://localhost:5070${category.categoryImg}`}
+                      src={`https://api.abcpabnabd.com${category.categoryImg}`}
                       alt=""
                     />
                   </div>

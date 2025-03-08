@@ -1,15 +1,15 @@
 "use client";
 
-import React, { useContext, useEffect, useState } from "react";
 import specialSliderImg4 from "@/assets/img/product/special-slider-img4.webp";
-import { FaAnglesLeft, FaAnglesRight } from "react-icons/fa6";
-import axios from "axios";
-import { QuickViewContext } from "@/Utilities/Contexts/QuickViewContextProvider";
-import ProductQuickModal from "@/Components/Shared/ProductQuickModal/ProductQuickModal";
-import "../../../assets/css/product.css";
 import Breadcrumb from "@/Components/Shared/Breadcrumb/Breadcrumb";
-import { usePathname } from "next/navigation";
+import ProductQuickModal from "@/Components/Shared/ProductQuickModal/ProductQuickModal";
+import { QuickViewContext } from "@/Utilities/Contexts/QuickViewContextProvider";
+import axios from "axios";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useContext, useEffect, useState } from "react";
+import { FaAnglesLeft, FaAnglesRight } from "react-icons/fa6";
+import "../../../assets/css/product.css";
 
 const AllProducts = ({ catId }) => {
   const [filterPrice, setFilterPrice] = useState(0);
@@ -27,7 +27,7 @@ const AllProducts = ({ catId }) => {
   useEffect(() => {
     const fetchProducts = async () => {
       const response = await axios.get(
-        "http://localhost:5070/api/v1/product-list"
+        "https://api.abcpabnabd.com/api/v1/product-list"
       );
 
       setProducts(response?.data?.data);
@@ -38,7 +38,7 @@ const AllProducts = ({ catId }) => {
 
   useEffect(() => {
     const fetchCategories = async () => {
-      const response = await axios.get("http://localhost:5070/api/v1/category");
+      const response = await axios.get("https://api.abcpabnabd.com/api/v1/category");
 
       if (response?.data?.status === "success") {
         setCategories(response?.data?.data);
@@ -574,7 +574,7 @@ const AllProducts = ({ catId }) => {
                         <div className="product">
                           <Link href={`/products/${product?._id}`}>
                             <img
-                              src={`http://localhost:5070${product?.productImg}`}
+                              src={`https://api.abcpabnabd.com${product?.productImg}`}
                               alt=""
                             />
                           

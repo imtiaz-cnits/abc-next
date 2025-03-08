@@ -1,13 +1,13 @@
 "use client";
-import { usePathname } from "next/navigation";
-import React, { useEffect, useRef, useState } from "react";
-import logo from "@/assets/img/main_logo_abc.svg";
-import { FaAngleRight, FaBars, FaSearch, FaTimes } from "react-icons/fa";
 import cartImg1 from "@/assets/img/cart-product-img1.webp";
 import cartImg2 from "@/assets/img/cart-product-img2.webp";
 import cartImg3 from "@/assets/img/cart-product-img3.webp";
-import Link from "next/link";
+import logo from "@/assets/img/main_logo_abc.svg";
 import axios from "axios";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
+import { FaBars, FaSearch, FaTimes } from "react-icons/fa";
 import MenuItem from "./MenuItem/MenuItem";
 
 const Navbar = () => {
@@ -27,7 +27,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const fetchCategories = async () => {
-      const response = await axios.get("http://localhost:5070/api/v1/category");
+      const response = await axios.get("https://api.abcpabnabd.com/api/v1/category");
 
       if (response?.data?.status === "success") {
         setCategories(response?.data?.data);
@@ -40,7 +40,7 @@ const Navbar = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       const response = await axios.get(
-        "http://localhost:5070/api/v1/product-list"
+        "https://api.abcpabnabd.com/api/v1/product-list"
       );
 
       if (response?.data?.status === "success") {
@@ -291,7 +291,7 @@ const Navbar = () => {
                         <div className="product">
                           <img
                             alt=""
-                            src={`http://localhost:5070${product?.productImg}`}
+                            src={`https://api.abcpabnabd.com${product?.productImg}`}
                           />
                         </div>
                         <div className="product_details">
@@ -424,7 +424,7 @@ const Navbar = () => {
                   <div className="product">
                     <img
                       alt=""
-                      src={`http://localhost:5070${product?.productImg}`}
+                      src={`https://api.abcpabnabd.com${product?.productImg}`}
                     />
                   </div>
                   <div className="product_details">

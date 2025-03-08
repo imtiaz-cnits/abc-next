@@ -2,7 +2,7 @@
 import { AdminRouteContext } from "@/Layouts/DashboardLayout/DashboardLayout";
 import axios from "axios";
 import { usePathname, useRouter } from "next/navigation";
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import toast from "react-hot-toast";
 
 const AdminRoute = ({ children }) => {
@@ -18,7 +18,7 @@ const AdminRoute = ({ children }) => {
     const fetchAdmin = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5070/api/v1/dashboard",
+          "https://api.abcpabnabd.com/api/v1/dashboard",
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
