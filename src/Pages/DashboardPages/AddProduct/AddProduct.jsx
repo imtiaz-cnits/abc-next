@@ -10,8 +10,6 @@ import "./AddProduct.css";
 
 import { FaXmark } from "react-icons/fa6";
 
-// import("froala-editor/js/plugins.pkgd.min.js");
-
 const AddProduct = () => {
   const fileInputRef = useRef(null);
 
@@ -56,6 +54,8 @@ const AddProduct = () => {
   const [productImg, setProductImg] = useState("");
   const [productImgFiles, setProductImgFiles] = useState([]);
   const [stock, setStock] = useState("");
+  const [colorInput, setColorInput] = useState("")
+  const [color, setColor] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState({
     productName: "",
     productStatus: "",
@@ -234,6 +234,7 @@ const AddProduct = () => {
         if (specification) formData.append("specification", specification);
         if (description) formData.append("description", description);
         if (stock) formData.append("stock", stock);
+        if (color.length > 0) formData.append("color", JSON.stringify(color));
 
         url = "https://api.abcpabnabd.com/api/v1/add-product";
         successMessage = "Product added successfully!";
@@ -379,6 +380,7 @@ const AddProduct = () => {
     setProductImg("");
     setProductImgFiles([]);
     setStock("");
+    setColor([]);
   };
   const handleBrandNameChange = (e) => setBrandName(e.target.value);
   const handleBrandStatusChange = (e) => setBrandStatus(e.target.value);
@@ -394,6 +396,22 @@ const AddProduct = () => {
   const handleSubCategoryStatusChange = (e) =>
     setSubCategoryStatus(e.target.value);
   // ======= Add Sub Category Handles ======= //
+
+  
+  const handleColorInput = (e) => {
+
+    setColorInput(e.target.value)
+  }
+
+  const addColor = (color) =>{
+    setColor(prev=> [...prev, color])
+    setColorInput("")
+  }
+
+  const deleteColor =(removedColor)=>{
+    const newColor = color.filter(c=> c !== removedColor)
+    setColor(newColor)
+  }
 
   return (
     <>
@@ -540,7 +558,7 @@ const AddProduct = () => {
                               label: selectedSubCategory.subCategoryName,
                               value: selectedSubCategory._id,
                             }
-                          : null
+                          : {}
                       } // Ensure value is null when no subcategory is selected
                       onChange={(selectedOption) => {
                         if (selectedOption) {
@@ -715,25 +733,28 @@ const AddProduct = () => {
                 </div>
               </div>
 
-             {/* <div className="row">
+              <div className="row">
                 <div className="form-row col-lg-6">
                   <label htmlFor="">Colors*</label>
-                  <ReactTags
-                    ref={reactColors}
-                    tags={color.map((c) => ({
-                      name: c,
-                    }))}
-                    onDelete={onDeleteColors}
-                    onAddition={onAdditionColors}
-                    suggestions={[]}
-                    allowNew
-                    removeButtonText="Click to remove color"
-                    placeholderText="Add new color"
-                    value={color}
-                    onChange={handleProductColorChange}
+                  <input
+                    type="text"
+                    placeholder="Add new color"
+                    value={colorInput}
+                    onChange={handleColorInput}
+                    onKeyDown={(e)=>{
+                      if (e.key === 'Enter') {
+                        e.preventDefault();
+                        addColor(colorInput)
+                    }}}
                   />
+
+                  <div className="colors">
+                    {
+                      color?.map((c, idx)=><span onClick={()=>deleteColor(c)} key={idx}>{c}</span>)
+                    }
+                  </div>
                 </div>
-              </div>*/}
+              </div>
 
               <div className="row">
                 <button type="submit" className="submit-btn">
