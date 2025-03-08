@@ -1,15 +1,13 @@
 "use client";
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import "./UpdateProduct.css";
-import uploadImg from "@/assets/icons/upload-img.svg";
-import ReactTags from "react-tag-autocomplete";
-import Select from "react-select";
-import "froala-editor/css/froala_style.min.css";
-import "froala-editor/css/froala_editor.pkgd.min.css";
-import FroalaEditorComponent from "react-froala-wysiwyg";
-import { FaXmark } from "react-icons/fa6";
 import axios from "axios";
+import "froala-editor/css/froala_editor.pkgd.min.css";
+import "froala-editor/css/froala_style.min.css";
+import { useEffect, useRef, useState } from "react";
+import FroalaEditorComponent from "react-froala-wysiwyg";
 import toast from "react-hot-toast";
+import { FaXmark } from "react-icons/fa6";
+import Select from "react-select";
+import "./UpdateProduct.css";
 
 // import("froala-editor/js/plugins.pkgd.min.js");
 
@@ -33,7 +31,6 @@ const UpdateProduct = ({ id }) => {
   const [productImgFiles, setProductImgFiles] = useState([]);
   const [productImgFile, setProductImgFile] = useState(null);
   const [stock, setStock] = useState("");
-  const [color, setColor] = useState([]);
 
   // Set Brand Infos for Brand Selection
   const [brandName, setBrandName] = useState("");
@@ -60,21 +57,6 @@ const UpdateProduct = ({ id }) => {
   });
   const [filteredSubCategories, setFilteredSubCategories] = useState([]);
 
-  const reactColors = useRef();
-  const onDeleteColors = useCallback(
-    (colorIndex) => {
-      setColor(color.filter((_, i) => i !== colorIndex));
-    },
-    [color]
-  );
-
-  const onAdditionColors = useCallback(
-    (newColor) => {
-      setColor([...color, newColor?.name]);
-    },
-    [color]
-  );
-
   // ======= Update Product Handles ======= //
   const handleProductCodeChange = (e) => setProductCode(e.target.value);
   const handleProductNameChange = (e) => setProductName(e.target.value);
@@ -86,7 +68,6 @@ const UpdateProduct = ({ id }) => {
     setSpecification(e.target.value);
   const handleProductDescriptionChange = (e) => setDescription(e.target.value);
   const handleProductStockChange = (e) => setStock(e.target.value);
-  const handleProductColorChange = (e) => setColor(e.target.value);
   // ======= Update Product Handles ======= //
 
   const handleBrandNameChange = (e) => setBrandName(e.target.value);
@@ -135,7 +116,6 @@ const UpdateProduct = ({ id }) => {
       setSpecification(productDetails?.specification);
       setDescription(productDetails?.description);
       setStock(product?.stock);
-      setColor(product?.color);
       setProductImg(product?.productImg);
 
       // Set filtered sub categories
@@ -399,7 +379,6 @@ const UpdateProduct = ({ id }) => {
     formData.append("keyFeature", keyFeature);
     formData.append("specification", specification);
     formData.append("description", description);
-    formData.append("color", JSON.stringify(color));
     formData.append("brandID", selectedBrand?._id);
     formData.append("categoryID", selectedCategory?._id);
     formData.append("subCategoryID", selectedSubCategory?._id);
@@ -746,7 +725,7 @@ const UpdateProduct = ({ id }) => {
                 </div>
               </div>
 
-              <div className="row">
+              {/* <div className="row">
                 <div className="form-row col-lg-6">
                   <label htmlFor="">Colors*</label>
                   <ReactTags
@@ -764,7 +743,7 @@ const UpdateProduct = ({ id }) => {
                     onChange={handleProductColorChange}
                   />
                 </div>
-              </div>
+              </div> */}
 
               <div className="row">
                 <button type="submit" className="submit-btn">

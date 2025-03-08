@@ -1,15 +1,12 @@
 "use client";
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import { toast } from "react-hot-toast";
 import axios from "axios";
-import Swal from "sweetalert2";
-import "./AddProduct.css";
-import uploadImg from "@/assets/icons/upload-img.svg";
-import ReactTags from "react-tag-autocomplete";
-import Select from "react-select";
-import "froala-editor/css/froala_style.min.css";
 import "froala-editor/css/froala_editor.pkgd.min.css";
+import "froala-editor/css/froala_style.min.css";
+import { useEffect, useRef, useState } from "react";
 import FroalaEditorComponent from "react-froala-wysiwyg";
+import { toast } from "react-hot-toast";
+import Select from "react-select";
+import "./AddProduct.css";
 
 import { FaXmark } from "react-icons/fa6";
 
@@ -59,25 +56,11 @@ const AddProduct = () => {
   const [productImg, setProductImg] = useState("");
   const [productImgFiles, setProductImgFiles] = useState([]);
   const [stock, setStock] = useState("");
-  const [color, setColor] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState({
     productName: "",
     productStatus: "",
     productImg: null,
   });
-  const reactColors = useRef();
-  const onDeleteColors = useCallback(
-    (colorIndex) => {
-      setColor(color.filter((_, i) => i !== colorIndex));
-    },
-    [color]
-  );
-  const onAdditionColors = useCallback(
-    (newColor) => {
-      setColor([...color, newColor?.name]);
-    },
-    [color]
-  );
 
   // ======= Add Product Handles ======= //
   const handleProductCodeChange = (e) => setProductCode(e.target.value);
@@ -90,7 +73,6 @@ const AddProduct = () => {
     setSpecification(e.target.value);
   const handleProductDescriptionChange = (e) => setDescription(e.target.value);
   const handleProductStockChange = (e) => setStock(e.target.value);
-  const handleProductColorChange = (e) => setColor(e.target.value);
   // ======= Add Product Handles ======= //
 
   // Fetch brands when the component mounts
@@ -252,7 +234,6 @@ const AddProduct = () => {
         if (specification) formData.append("specification", specification);
         if (description) formData.append("description", description);
         if (stock) formData.append("stock", stock);
-        if (color.length > 0) formData.append("color", JSON.stringify(color));
 
         url = "http://localhost:5070/api/v1/add-product";
         successMessage = "Product added successfully!";
@@ -398,7 +379,6 @@ const AddProduct = () => {
     setProductImg("");
     setProductImgFiles([]);
     setStock("");
-    setColor([]);
   };
   const handleBrandNameChange = (e) => setBrandName(e.target.value);
   const handleBrandStatusChange = (e) => setBrandStatus(e.target.value);
@@ -735,7 +715,7 @@ const AddProduct = () => {
                 </div>
               </div>
 
-              <div className="row">
+             {/* <div className="row">
                 <div className="form-row col-lg-6">
                   <label htmlFor="">Colors*</label>
                   <ReactTags
@@ -753,7 +733,7 @@ const AddProduct = () => {
                     onChange={handleProductColorChange}
                   />
                 </div>
-              </div>
+              </div>*/}
 
               <div className="row">
                 <button type="submit" className="submit-btn">
