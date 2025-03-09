@@ -1,13 +1,13 @@
 "use client";
-import axios from "axios";
-import "froala-editor/css/froala_editor.pkgd.min.css";
-import "froala-editor/css/froala_style.min.css";
-import { useEffect, useRef, useState } from "react";
-import FroalaEditorComponent from "react-froala-wysiwyg";
-import toast from "react-hot-toast";
-import { FaXmark } from "react-icons/fa6";
-import Select from "react-select";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import "./UpdateProduct.css";
+import Select from "react-select";
+import "froala-editor/css/froala_style.min.css";
+import "froala-editor/css/froala_editor.pkgd.min.css";
+import FroalaEditorComponent from "react-froala-wysiwyg";
+import { FaXmark } from "react-icons/fa6";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const UpdateProduct = ({ id }) => {
   const BrandModalCloseBtn = useRef(null);
@@ -117,7 +117,7 @@ const UpdateProduct = ({ id }) => {
       setSpecification(productDetails?.specification);
       setDescription(productDetails?.description);
       setStock(product?.stock);
-      // setColor(product?.color);
+      setColor(product?.color);
       setProductImg(product?.productImg);
 
       // Set filtered sub categories
@@ -381,7 +381,7 @@ const UpdateProduct = ({ id }) => {
     formData.append("keyFeature", keyFeature);
     formData.append("specification", specification);
     formData.append("description", description);
-    // formData.append("color", JSON.stringify(color));
+    formData.append("color", JSON.stringify(color));
     formData.append("brandID", selectedBrand?._id);
     formData.append("categoryID", selectedCategory?._id);
     formData.append("subCategoryID", selectedSubCategory?._id);
