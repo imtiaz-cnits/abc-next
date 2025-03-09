@@ -1,13 +1,13 @@
 "use client";
+import { usePathname } from "next/navigation";
+import React, { useEffect, useRef, useState } from "react";
+import logo from "@/assets/img/main_logo_abc.svg";
+import { FaAngleRight, FaBars, FaSearch, FaTimes } from "react-icons/fa";
 import cartImg1 from "@/assets/img/cart-product-img1.webp";
 import cartImg2 from "@/assets/img/cart-product-img2.webp";
 import cartImg3 from "@/assets/img/cart-product-img3.webp";
-import logo from "@/assets/img/main_logo_abc.svg";
-import axios from "axios";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
-import { FaBars, FaSearch, FaTimes } from "react-icons/fa";
+import axios from "axios";
 import MenuItem from "./MenuItem/MenuItem";
 
 const Navbar = () => {
@@ -20,10 +20,6 @@ const Navbar = () => {
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   const path = usePathname();
-
-  if (path.startsWith("/dashboard")) {
-    return;
-  }
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -65,6 +61,9 @@ const Navbar = () => {
 
   useEffect(() => {
 
+    if (path.startsWith("/dashboard")) {
+      return;
+    }
 
 
     const resetDropdowns = () => {
@@ -251,6 +250,10 @@ const Navbar = () => {
     const value = e.target.value;
     setSearchValue(value);
   };
+
+  if (path.startsWith("/dashboard")) {
+    return;
+  }
 
   return (
     <>
