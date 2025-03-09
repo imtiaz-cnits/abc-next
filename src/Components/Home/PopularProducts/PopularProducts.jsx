@@ -152,7 +152,7 @@ const PopularProducts = () => {
                               </svg>
                             </a>
                           </div>
-                        </div>`
+                        </div>
 
                       <div className="product_details">
                         <h3 className="product_name">{product?.productName}</h3>
