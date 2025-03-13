@@ -65,15 +65,11 @@ const Navbar = () => {
       return;
     }
 
-
     const resetDropdowns = () => {
       document.querySelectorAll("li.megamenu").forEach((item) => {
         item.classList.remove("sub-open");
       });
     };
-
-
-
 
     document.addEventListener("click", function (event) {
       if (!event.target.closest(".tooltip-a, .toggle-tooltip")) {
@@ -165,7 +161,7 @@ const Navbar = () => {
             trigger.classList.remove("menuopen");
           });
 
-        resetDropdowns(); // Reset dropdowns to default state
+        resetDropdowns();
         event.preventDefault();
       }
     });
@@ -207,6 +203,11 @@ const Navbar = () => {
 
 
   const toggleMobileMenu = (e) => {
+
+
+    if (typeof window === "undefined" || typeof document === "undefined") return;
+
+
     const mobileMenu = document.querySelector(".mobile-menu");
 
     if (mobileMenu && getComputedStyle(mobileMenu).left === "0px") {
@@ -216,7 +217,11 @@ const Navbar = () => {
         .forEach((trigger) => {
           trigger.classList.remove("menuopen");
         });
-      resetDropdowns(); // Reset dropdowns to default state
+
+
+        document.querySelectorAll("li.megamenu").forEach((item) => {
+          item.classList.remove("sub-open");
+        });
     } else {
       if (mobileMenu) {
         mobileMenu.style.left = "0"; // Open menu

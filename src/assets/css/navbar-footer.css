@@ -152,7 +152,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 0 2px;
+  padding: 12px 2px;
   gap: 30px;
 }
 
@@ -300,7 +300,7 @@ body {
 /* Header Mobile view Toggle Searchbar Show */
 .tooltip-a {
   position: sticky;
-  margin-top: -84px;
+  margin-top: -94px;
   top: 0px;
   right: 0%;
   width: 100%;
@@ -476,7 +476,10 @@ body {
 
   #navbar_header .mobile_view_logo {
     display: block;
-    width: 100px;
+  }
+
+  #navbar_header .mobile_view_logo img{
+    width: 150px;
   }
 
   #navbar_header .search_icon {
