@@ -270,13 +270,13 @@ const Navbar = () => {
                 <FaBars className="icon" />
               </a>
             </div>
+            <a href="/" className="header_logo mobile_view_logo">
+              <img src={logo.src} alt="" />
+            </a>
             <a href="/" className="header_logo desktop_view">
               <img src={logo.src} alt="" />
             </a>
             <div className="search">
-              <a href="/" className="header_logo mobile_view_logo">
-                <img src={logo.src} alt="" />
-              </a>
               <input
                 className="search_icon"
                 type="text"

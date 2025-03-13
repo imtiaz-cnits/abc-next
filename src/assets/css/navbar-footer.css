@@ -152,8 +152,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 2px;
-  gap: 30px;
+  padding: 16px 2px;
 }
 
 .header_item_wrapper {

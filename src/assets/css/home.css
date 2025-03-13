@@ -962,8 +962,6 @@ body {
 }
 
 @media screen and (max-width: 992px) {
-  .hero-slider-container {
-  }
 
   /* Slide hero_content1 */
 
@@ -1233,6 +1231,14 @@ body {
     display: none;
   }
 }
+
+@media screen and (max-width: 768px) {
+  #hero .swiper-pagination-bullet{
+    width: 12px;
+    height: 12px;
+  }
+}
+
 
 /* Hero End */
 
