@@ -1,4 +1,22 @@
-.key_feature div ul{
+.key_feature div ul {
   display: flex;
   flex-direction: column;
+}
+
+@media (max-width: 576px) {
+  .product_des .table_wrapper table tbody tr td {
+    font-size: 16px !important;
+  }
+
+  .product_des .table_wrapper table tbody tr td:nth-child(2) {
+    font-weight: 600 !important;
+  }
+
+  .product_des .table_wrapper table tbody tr {
+    display: inline-block !important;
+  }
+
+  .product_des .table_wrapper table tbody td {
+    border-bottom: none !important;
+  }
 }
