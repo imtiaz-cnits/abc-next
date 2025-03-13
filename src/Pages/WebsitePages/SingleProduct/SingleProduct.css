@@ -3,6 +3,10 @@
   flex-direction: column;
 }
 
+.single_product li {
+  cursor: default !important;
+}
+
 @media (max-width: 576px) {
   .product_des .table_wrapper table tbody tr td {
     font-size: 16px !important;
