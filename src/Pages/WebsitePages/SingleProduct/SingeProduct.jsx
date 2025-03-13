@@ -111,9 +111,9 @@ const SingleProduct = ({ id }) => {
                   <h1>{product?.productName}</h1>
                   <div className="price">
                     <span className="discounted_price">
-                      ${product?.discountPrice}
+                    ৳{product?.discountPrice}
                     </span>
-                    <span className="original_price">${product?.price}</span>
+                    <span className="original_price">৳{product?.price}</span>
                   </div>
 
                   <div className="product_all_details">
