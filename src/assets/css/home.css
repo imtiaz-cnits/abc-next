@@ -1588,7 +1588,6 @@ body {
 }
 
 .populer_product_card .product_details span:nth-last-child(1) {
-  font-size: 20px;
   color: var(--text-color);
   font-weight: bold;
   text-decoration: line-through;
@@ -1687,11 +1686,7 @@ body {
   }
 
   .populer_product_card .product_details span {
-    font-size: 20px;
-  }
-
-  .populer_product_card .product_details span:nth-last-child(1) {
-    font-size: 20px;
+    font-size: 16px;
   }
 
   .populer_product_card .product_details .price {
