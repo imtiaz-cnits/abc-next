@@ -3,7 +3,7 @@ import "@/assets/css/vendor/owl.carousel.min.css";
 import "@/assets/css/vendor/owl.theme.default.min.css";
 import "./globals.css";
 import "@/assets/css/app.css";
-import favicon from "@/assets/img/abc-logo-icon.svg";
+import favicon from "../../public/abc-logo-icon.svg";
 import JavascriptClient from "@/Components/JavascriptClient/JavascriptClient";
 import "@/assets/css/vendor/swiper-bundle.min.css";
 import Navbar from "@/Components/Shared/Navbar/Navbar";
