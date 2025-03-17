@@ -1,9 +1,8 @@
 "use client";
 
-import { QuickViewContext } from "@/Utilities/Contexts/QuickViewContextProvider";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import Link from "next/link";
-import { useContext, useEffect, useState } from "react";
+import { QuickViewContext } from "@/Utilities/Contexts/QuickViewContextProvider";
 
 const PopularProducts = () => {
   const [products, setProducts] = useState([]);
@@ -53,12 +52,12 @@ const PopularProducts = () => {
                 >
                     <div className="populer_product_card">
                       <div className="product">
-                      <Link href={`/products/${product?._id}`}>
+                      <a href={`/products/${product?._id}`}>
                           <img 
                             src={`https://api.abcpabnabd.com${product.productImg}`}
                             alt=""
                           />
-                      </Link>
+                      </a>
                           <span className="product_status">New</span>
 
                           <div className="product_icon">
@@ -97,7 +96,7 @@ const PopularProducts = () => {
                                 />
                               </svg>
                             </a>
-                            <Link
+                            <a
                               href={`/products/${product?._id}`}
                               className="icon"
                             >
@@ -136,7 +135,7 @@ const PopularProducts = () => {
                                   </clipPath>
                                 </defs>
                               </svg>
-                            </Link>
+                            </a>
                             <a href="./product-single.html" className="icon">
                               <svg
                                 width="36"
@@ -157,8 +156,8 @@ const PopularProducts = () => {
                       <div className="product_details">
                         <h3 className="product_name">{product?.productName}</h3>
                         <div className="price">
-                          <span>৳ {product?.discountPrice}</span>
-                          <span>৳ {product?.price}</span>
+                          <span>৳ {product?.discountPrice?.toLocaleString(2)}</span>
+                          <span>৳ {product?.price?.toLocaleString(2)}</span>
                         </div>
                       </div>
                     </div>
@@ -168,7 +167,7 @@ const PopularProducts = () => {
           </div>
 
           <div className="view_all_products">
-            <a href="./product.html" className="view_all_btn">
+            <a href="/products" className="view_all_btn">
               View All Products
             </a>
           </div>

@@ -5,7 +5,6 @@ import { FaFacebookF, FaYoutube } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { usePathname } from "next/navigation";
 import paymentImg from "@/assets/img/payment.png"
-import Link from "next/link";
 
 const Footer = () => {
   const path = usePathname();
@@ -29,7 +28,7 @@ const Footer = () => {
                   by the readable content of a page when looking at its layout.
                 </p>
               </div>
-              <img src={paymentImg?.src} className="mt-md-5" />
+              <img src={paymentImg?.src} className="mt-md-5 payment-img" />
             </div>
             <div className="footer_wrapper_item col-lg-2 col-md-4">
               <div className="footer_content">
@@ -39,10 +38,10 @@ const Footer = () => {
                 <div className="footer_content_menu mt-2">
                   <ul>
                     <li>
-                      <Link href="/about">About Us</Link>
+                      <a href="/about">About Us</a>
                     </li>
                     <li>
-                      <Link href="/contact">Contact Us</Link>
+                      <a href="/contact">Contact Us</a>
                     </li>
                     <li>
                       <a href="#">Terms and Conditions</a>
@@ -62,7 +61,7 @@ const Footer = () => {
                 <div className="footer_content_menu mt-2">
                   <ul>
                     <li>
-                      <Link href="/user-profile">My Account</Link>
+                      <a href="/user-profile">My Account</a>
                     </li>
                     <li>
                       <a href="#">Order History</a>

@@ -1,12 +1,11 @@
 "use client";
 
+import React, { useContext, useEffect, useState } from "react";
 import specialSliderImg4 from "@/assets/img/product/special-slider-img4.webp";
-import ProductQuickModal from "@/Components/Shared/ProductQuickModal/ProductQuickModal";
-import { QuickViewContext } from "@/Utilities/Contexts/QuickViewContextProvider";
-import axios from "axios";
-import Link from "next/link";
-import { useContext, useEffect, useState } from "react";
 import { FaAnglesLeft, FaAnglesRight } from "react-icons/fa6";
+import axios from "axios";
+import { QuickViewContext } from "@/Utilities/Contexts/QuickViewContextProvider";
+import ProductQuickModal from "@/Components/Shared/ProductQuickModal/ProductQuickModal";
 import "../../../assets/css/product.css";
 
 const SingleSubCategory = ({id: subCategoryId}) => {
@@ -561,12 +560,12 @@ const SingleSubCategory = ({id: subCategoryId}) => {
                     >
                         <div className="special_product_card">
                           <div className="product">
-                            <Link href={`/products/${product?._id}`}>
+                            <a href={`/products/${product?._id}`}>
                               <img
                                 src={`https://api.abcpabnabd.com${product?.productImg}`}
                                 alt=""
                               />
-                            </Link>
+                            </a>
                             <span className="product_status">New</span>
   
                             <div className="product_icon">
@@ -666,8 +665,8 @@ const SingleSubCategory = ({id: subCategoryId}) => {
                               {product?.productName}
                             </h3>
                             <div className="price">
-                              <span>৳{product?.discountPrice}</span>
-                              <span className="discount">৳{product?.price}</span>
+                              <span>৳{product?.discountPrice?.toLocaleString(2)}</span>
+                              <span className="discount">৳{product?.price?.toLocaleString(2)}</span>
                             </div>
                           </div>
                         </div>

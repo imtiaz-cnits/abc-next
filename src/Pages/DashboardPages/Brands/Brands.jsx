@@ -1,11 +1,11 @@
 "use client";
 
-import DashboardPagination from "@/Components/Dashboard/DashboardPagination/DashboardPagination";
-import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "react-hot-toast";
-import { FaXmark } from "react-icons/fa6";
+import axios from "axios";
 import Swal from "sweetalert2";
+import DashboardPagination from "@/Components/Dashboard/DashboardPagination/DashboardPagination";
+import { FaXmark } from "react-icons/fa6";
 
 const Brands = () => {
   const tableRef = useRef(null);

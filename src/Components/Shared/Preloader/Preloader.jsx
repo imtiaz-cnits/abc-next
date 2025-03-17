@@ -18,10 +18,10 @@ const Preloader = () => {
     }, 2000);
   }, [path]);
 
-    // Prevent Preloader from rendering on /dashboard and /dashboard/login
-    if (path.startsWith("/dashboard")) {
-      return null;
-    }
+  // Prevent Preloader from rendering on /dashboard and /dashboard/login
+  if (path.startsWith("/dashboard")) {
+    return;
+  }
 
   return (
     <div className="preloader_wrapper">

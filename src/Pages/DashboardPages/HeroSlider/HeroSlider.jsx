@@ -1,8 +1,8 @@
 "use client";
 
-import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "react-hot-toast";
+import axios from "axios";
 import Swal from "sweetalert2";
 
 const HeroSlider = () => {

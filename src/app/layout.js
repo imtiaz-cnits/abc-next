@@ -14,9 +14,11 @@ import QuickViewContextProvider from "@/Utilities/Contexts/QuickViewContextProvi
 import UserContextProvider from "@/Utilities/Contexts/UserContextProvider";
 import { Toaster } from "react-hot-toast"; // Import Toaster
 import "./globals.css";
+import CartContextProvider from "@/Utilities/Contexts/CartContextProvider";
+
 
 export const metadata = {
-  title: "Home | ABC Computers",
+  title: "ABC Computers",
 };
 
 export default function RootLayout({ children }) {
@@ -31,16 +33,18 @@ export default function RootLayout({ children }) {
         <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet"/>
       </head>
       <body>
-        <UserContextProvider>
-          <QuickViewContextProvider>
-            <Navbar />
-            {children}
-            <Footer />
-            <BackToTop />
-            <JavascriptClient />
-            <Toaster />
-            <Preloader />
-          </QuickViewContextProvider>
+      <UserContextProvider>
+          <CartContextProvider>
+            <QuickViewContextProvider>
+              <Navbar />
+              {children}
+              <Footer />
+              <BackToTop />
+              <JavascriptClient />
+              <Toaster />
+              <Preloader />
+            </QuickViewContextProvider>
+          </CartContextProvider>
         </UserContextProvider>
       </body>
     </html>

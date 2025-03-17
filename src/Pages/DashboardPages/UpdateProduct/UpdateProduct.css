@@ -269,7 +269,6 @@
   display: none !important;
 }
 
-
 .colors {
   display: flex;
   justify-content: flex-start;
@@ -278,7 +277,7 @@
   flex-wrap: wrap;
 }
 
-.colors span {
+.colors span{
   background-color: var(--primary-color);
   color: #fff;
   padding: 3px 5px;
