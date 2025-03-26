@@ -1,6 +1,6 @@
 "use client";
 import { QuickViewContext } from "@/Utilities/Contexts/QuickViewContextProvider";
-import { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 
 const ProductQuickModal = () => {
   const { product } = useContext(QuickViewContext);

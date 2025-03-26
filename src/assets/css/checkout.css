@@ -167,6 +167,17 @@ body {
   border-radius: 16px;
 }
 
+h2.heading{
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: var(--primary-color);
+  font-weight: 800 !important;
+}
+
+.shipping_section .payment-methods-img{
+  width: 100%;
+}
+
 .billing_section h1 {
   margin-bottom: 20px;
   font-size: 28px;
@@ -225,7 +236,8 @@ body {
 
 .billing_details .form_group input,
 .billing_details .form_group select,
-.billing_details .form_group textarea {
+.billing_details .form_group textarea,
+.billing_details .payment_option input.transaction {
   width: 100%;
   padding: 10px;
   border: none;
@@ -236,12 +248,24 @@ body {
   font-weight: 500;
 }
 
+.billing_details .payment_option input.transaction{
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
 .billing_details .form_group textarea {
   min-height: 44px;
 }
 
 .billing_details .form_group select {
   padding: 12px 10px;
+}
+
+.error-message{
+  font-size: 12px !important;
+  color: rgb(184, 0, 0) !important;
+  font-weight: 400 !important;
 }
 
 .billing_details textarea {
@@ -267,46 +291,46 @@ body {
   display: flex;
 }
 
-.billing_details .shipping_section {
-  margin-top: 30px;
-}
-
-.billing_details .shipping_section h2 {
-  margin-bottom: 20px;
-  font-size: 28px;
-  color: var(--primary-color);
-  font-weight: 800 !important;
-}
-
-.billing_details .shipping_option {
+.billing_details .payment_option {
   width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
   margin-bottom: 16px;
-  padding: 0 20px;
+  padding: 10px 20px;
   border: 1px solid #eeeff3;
   border-radius: 16px;
 }
 
-.billing_details .shipping_option:nth-last-child(1) {
+.billing_details .payment_option .payment-img{
+  width: 30px;
+  height: 30px;
+}
+
+.billing_details .payment_option .radio-container{
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.billing_details .payment_option:nth-last-child(1) {
   margin-bottom: 0px !important;
 }
 
-.billing_details .shipping_option .details {
+.billing_details .payment_option .details {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 10px;
 }
 
-.billing_details .shipping_option .regular span {
+.billing_details .payment_option span {
   font-size: 16px;
   color: var(--accent);
   font-weight: 500;
 }
 
-.billing_details .shipping_option .details strong,
-.billing_details .shipping_option .details span {
+.billing_details .payment_option .details strong,
+.billing_details .payment_option .details span {
   display: block;
   font-size: 18px;
   font-weight: bold;
@@ -314,30 +338,28 @@ body {
   margin: 0;
 }
 
-.billing_details .shipping_option input {
+.billing_details .payment_option input[type="radio"] {
   width: 29px;
   height: 21px;
-  margin-top: 20px;
   cursor: pointer;
 }
 
-.billing_details .shipping_option label {
+.billing_details .payment_option label {
   width: 100%;
-  padding: 20px 0;
   cursor: pointer;
   position: relative;
   margin-left: 10px;
 }
 
-.billing_details .shipping_option input[type="radio"] {
+.billing_details .payment_option input[type="radio"] {
   opacity: 0;
   pointer-events: none;
 }
 
-.billing_details .shipping_option label::before {
+.billing_details .payment_option label::before {
   content: "";
   position: absolute;
-  top: 34%;
+  top: 50%;
   left: -32px;
   transform: translateY(-50%);
   width: 16px;
@@ -349,7 +371,7 @@ body {
   transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.billing_details .shipping_option input[type="radio"]:checked + label::before {
+.billing_details .payment_option input[type="radio"]:checked + label::before {
   background-color: var(--secondary-color);
   box-shadow: 0 0 0 2px transparent, 0 0 0 2px var(--white),
     0 0 0 4px var(--secondary-color);
@@ -359,23 +381,23 @@ body {
   .billing_details .breadcrumb {
     margin: 30px 0;
   }
-  .billing_details .shipping_section h2,
-  .billing_section h1 {
-    font-size: 24px;
+  h2.heading {
+    font-size: 20px;
   }
 
   .billing_details .billing_section,
   .billing_details .summary_section,
   .billing_details .shipping_section {
     padding: 14px;
+    margin-top: 30px;
   }
 
-  .billing_details .shipping_option {
-    padding: 0px 10px;
+  .billing_details .payment_option {
+    padding: 10px;
   }
 
-  .billing_details .shipping_option .details h2,
-  .billing_details .shipping_option .details h1 {
+  .billing_details .payment_option .details h2,
+  .billing_details .payment_option .details h1 {
     font-size: 16px;
   }
 
@@ -543,13 +565,6 @@ body {
   background: var(--primary-color);
 }
 
-.billing_details .cart_header h2 {
-  margin-bottom: 10px;
-  font-size: 18px;
-  color: var(--primary-color);
-  font-weight: bold;
-}
-
 .billing_details .cart_items {
   list-style: none;
   padding: 0;
@@ -653,3 +668,332 @@ body {
 }
 
 /* Billing Details End */
+
+
+
+/* Login Modal Start */
+
+.sign-in-signup-container h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.sign-in-signup-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+}
+
+.sign-in-signup-container form .input-row {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+}
+
+.sign-in-signup-container form .input-row .input-field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.sign-in-signup-container form .input-row .input-field input {
+  width: 100%;
+  font-size: 14px;
+  height: 42px;
+  padding: 5px 15px;
+  background: #fff;
+  outline: none;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+.sign-in-signup-container form .input-row .input-field input:focus {
+  border: 1px solid #aaa;
+}
+
+.sign-in-signup-container form label {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  display: block;
+  text-decoration: capitalize;
+  color: var(--primary-color);
+  width: 100%;
+  position: relative;
+}
+
+.sign-in-signup-container form label .hide-icon {
+  width: 25px;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
+.sign-in-signup-container form button {
+  margin-top: 10px;
+  width: 100%;
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px;
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+}
+
+.sign-in-signup-container form button:hover {
+  background-color: var(--secondary-color);
+}
+
+.sign-in-signup-container form button:disabled {
+  background-color: darkgray;
+}
+
+.sign-in-signup-container .switch {
+  width: 100%;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sign-in-signup-container .switch div {
+  display: flex;
+  gap: 5px;
+}
+
+.sign-in-signup-container .switch span {
+  font-size: 14px;
+  color: var(--primary-color);
+  line-height: 26px;
+  font-weight: 500;
+}
+
+.sign-in-signup-container .switch .switch-btn {
+  color: var(--secondary-color);
+  cursor: pointer;
+}
+
+.sign-in-signup-container .switch .switch-btn:hover {
+  text-decoration: underline;
+}
+
+.sign-in-signup-container .switch .forgot {
+  color: var(--secondary-color);
+  cursor: pointer;
+}
+
+.sign-in-signup-container .switch .forgot:hover {
+  text-decoration: underline;
+}
+
+
+@media (max-width: 576px) {
+  .sign-in-signup-container .switch div {
+    justify-content: space-between;
+  }
+
+  .sign-in-signup-container .switch {
+    flex-direction: column;
+  }
+}
+
+
+
+/* Login Modal End */
+
+
+/* Payment Modal Start */
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  padding: 20px;
+  border: 1px solid #888;
+  transform: scale(0.9);
+  transition: transform 0.5s ease;
+}
+.modal-content .qr-code {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.modal-content .qr-code .qr-img {
+  width: 100px;
+  height: 100px;
+}
+.modal-content .qr-code .qr-img img {
+  width: 100%;
+}
+.modal-content .modal-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0px 0px 0px;
+  margin-top: -60px;
+}
+.modal-content .logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+.modal-content .logo img {
+  width: 100%;
+  object-fit: contain;
+  background-color: #fff;
+  border-radius: 50%;
+  padding: 6px;
+}
+
+/* Show the modal content */
+.modal.show .modal-content {
+  transform: scale(1);
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  color: #aaa;
+  float: right;
+  right: 20px;
+  top: 10px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Tab */
+
+.tabs {
+  margin-top: 20px;
+}
+
+.tabs h1 {
+  font-size: 18px;
+  font-weight: 600;
+  font-family: var(--primary-font);
+}
+
+.tabs h2 {
+  font-size: 18px;
+  font-weight: 600;
+  font-family: var(--primary-font);
+  margin-top: 10px;
+}
+
+.tabs p {
+  font-size: 14px;
+  font-weight: 600;
+  font-family: var(--secondary-font);
+  margin: 6px 0;
+}
+
+.tab-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: flex-start;
+}
+
+.tab-button {
+  flex: 1;
+  border: none;
+  background: #f0f0f0;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+}
+
+.tab-button .payment-img {
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: contain;
+}
+
+.tab-buttons .payment-img img {
+  height: 50px;
+}
+
+.tab-button.active {
+  background: #ddd;
+  font-weight: bold;
+}
+
+.tab-content .account-info{
+  border: 1px solid rgba(139, 139, 139, 0.438);
+  margin: 20px 0;
+  border-radius: 6px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.tab-content .account-info p span{
+  color: var(--secondary-color);
+}
+
+.tab-content .account-info button.copy{
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  margin-left: 4px;
+  background-color: #fff;
+}
+
+.transaction {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(139, 139, 139, 0.438);
+  transition: 0.3s;
+  font-size: 18px;
+  font-family: var(--secondary-font);
+}
+
+.transaction:focus {
+  border: 1px solid var(--primary-color);
+}
+.modal-content .pay-now {
+  display: block;
+  padding: 10px;
+  font-size: 18px;
+  font-family: var(--primary-font);
+  font-weight: 600;
+  color: var(--white);
+  background: var(--primary-color);
+  border-radius: 8px;
+  margin-top: 10px;
+  transition: 0.3s all ease;
+}
+
+.modal-content .pay-now:hover{
+  background: var(--secondary-color);
+}
+
+@media screen and (max-width: 576px) {
+  .modal-content {
+    width: 96%;
+    margin: 60px auto;
+  }
+}
+
+
+/* Payment Modal End */

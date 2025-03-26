@@ -1,12 +1,12 @@
 "use client";
 
-import DashboardPagination from "@/Components/Dashboard/DashboardPagination/DashboardPagination";
-import axios from "axios";
-import { useEffect, useRef, useState } from "react";
-import { toast } from "react-hot-toast";
-import { FaXmark } from "react-icons/fa6";
-import Swal from "sweetalert2";
+import React, { useEffect, useRef, useState } from "react";
 import CategoryRow from "./CategoryRow/CategoryRow";
+import DashboardPagination from "@/Components/Dashboard/DashboardPagination/DashboardPagination";
+import { toast } from "react-hot-toast";
+import axios from "axios";
+import Swal from "sweetalert2";
+import { FaXmark } from "react-icons/fa6";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faSort } from "@fortawesome/free-solid-svg-icons";
 

@@ -1,14 +1,14 @@
 "use client";
 
-import { QuickViewContext } from "@/Utilities/Contexts/QuickViewContextProvider";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import Link from "next/link";
-import { useContext, useEffect, useState } from "react";
+import { QuickViewContext } from "@/Utilities/Contexts/QuickViewContextProvider";
+import { CartContext } from "@/Utilities/Contexts/CartContextProvider";
 
 const PopularProducts = () => {
   const [products, setProducts] = useState([]);
   const { setProduct } = useContext(QuickViewContext);
-
+  const {directAddToCart} = useContext(CartContext)
   useEffect(() => {
     const fetchProducts = async () => {
       const response = await axios.get(
@@ -32,19 +32,8 @@ const PopularProducts = () => {
               <h2>Popular Products</h2>
             </div>
           </div>
-          <div className="tab-buttons">
-            <button className="tab-btn active" data-tab="newproduct">
-              New
-            </button>
-            <button className="tab-btn" data-tab="featureproduct">
-              Featured
-            </button>
-            <button className="tab-btn" data-tab="sellerproduct">
-              Best Seller
-            </button>
-          </div>
 
-          <div id="newproduct" className="tab-content active">
+          <div id="newproduct">
             <div className="row g-3 g-md-4">
               {products?.slice(0, 8)?.map((product) => (
                 <div
@@ -53,12 +42,12 @@ const PopularProducts = () => {
                 >
                     <div className="populer_product_card">
                       <div className="product">
-                      <Link href={`/products/${product?._id}`}>
+                      <a href={`/products/${product?._id}`}>
                           <img 
                             src={`https://api.abcpabnabd.com${product.productImg}`}
                             alt=""
                           />
-                      </Link>
+                      </a>
                           <span className="product_status">New</span>
 
                           <div className="product_icon">
@@ -97,9 +86,9 @@ const PopularProducts = () => {
                                 />
                               </svg>
                             </a>
-                            <Link
-                              href={`/products/${product?._id}`}
+                            <button
                               className="icon"
+                              onClick={()=> directAddToCart(product?._id, product?.stock)}
                             >
                               <svg
                                 width="32"
@@ -136,7 +125,7 @@ const PopularProducts = () => {
                                   </clipPath>
                                 </defs>
                               </svg>
-                            </Link>
+                            </button>
                             <a href="./product-single.html" className="icon">
                               <svg
                                 width="36"
@@ -155,10 +144,12 @@ const PopularProducts = () => {
                         </div>
 
                       <div className="product_details">
-                        <h3 className="product_name">{product?.productName}</h3>
+                        <a href={`/products/${product?._id}`}>
+                          <h3 className="product_name">{product?.productName}</h3>
+                        </a>
                         <div className="price">
-                          <span>৳ {product?.discountPrice}</span>
-                          <span>৳ {product?.price}</span>
+                          <span>৳ {product?.discountPrice?.toLocaleString(2)}</span>
+                          <span>৳ {product?.price?.toLocaleString(2)}</span>
                         </div>
                       </div>
                     </div>
@@ -168,7 +159,7 @@ const PopularProducts = () => {
           </div>
 
           <div className="view_all_products">
-            <a href="./product.html" className="view_all_btn">
+            <a href="/products" className="view_all_btn">
               View All Products
             </a>
           </div>

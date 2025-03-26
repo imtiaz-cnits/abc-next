@@ -204,8 +204,6 @@ p[data-f-id="pbf"]{
   display: none;
 }
 
-
-
 /* Product Slider Start */
 
 .swiper {
@@ -232,7 +230,7 @@ p[data-f-id="pbf"]{
 }
 
 .mySwiper2 {
-  height: 80%;
+  height: 66%;
   width: 100%;
 }
 
@@ -575,6 +573,7 @@ p[data-f-id="pbf"]{
 .single_product .action_buttons_custom {
   display: flex;
   align-items: center;
+  margin-top: 20px;
 }
 
 .single_product .action_buttons_custom .add_to_cart,
@@ -582,7 +581,7 @@ p[data-f-id="pbf"]{
   font-size: 18px;
   font-weight: 600;
   border-radius: 30px;
-  padding: 5px 30px;
+  padding: 10px 30px;
   margin-right: 10px;
   transition: 0.3s;
 }

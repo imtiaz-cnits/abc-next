@@ -14,33 +14,42 @@ import QuickViewContextProvider from "@/Utilities/Contexts/QuickViewContextProvi
 import UserContextProvider from "@/Utilities/Contexts/UserContextProvider";
 import { Toaster } from "react-hot-toast"; // Import Toaster
 import "./globals.css";
+import CartContextProvider from "@/Utilities/Contexts/CartContextProvider";
+import PlaceOrderContextProvider from "@/Utilities/Contexts/PlaceOrderContextProvider";
+import FloatingCart from "@/Components/Shared/FloatingCart/FloatingCart";
+
 
 export const metadata = {
-  title: "Home | ABC Computers",
+  title: "ABC Computers",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any"/>
-        <link rel="icon" href="/abc-logo-icon.svg" type="image/svg+xml"/>
-        <link rel="preconnect" href="https://fonts.googleapis.com"/>
-        <link rel="preconnect" href="https://fonts.gstatic.com"/>
-        <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet"/>
-        <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet"/>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/abc-logo-icon.svg" type="image/svg+xml" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet" />
       </head>
       <body>
         <UserContextProvider>
-          <QuickViewContextProvider>
-            <Navbar />
-            {children}
-            <Footer />
-            <BackToTop />
-            <JavascriptClient />
-            <Toaster />
-            <Preloader />
-          </QuickViewContextProvider>
+          <CartContextProvider>
+            <PlaceOrderContextProvider>
+              <QuickViewContextProvider>
+                <Navbar />
+                {children}
+                <Footer />
+                <FloatingCart/>
+                <BackToTop />
+                <JavascriptClient />
+                <Toaster />
+                <Preloader />
+              </QuickViewContextProvider>
+            </PlaceOrderContextProvider>
+          </CartContextProvider>
         </UserContextProvider>
       </body>
     </html>

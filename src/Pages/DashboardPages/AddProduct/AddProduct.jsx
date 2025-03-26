@@ -1,12 +1,12 @@
 "use client";
-import axios from "axios";
-import "froala-editor/css/froala_editor.pkgd.min.css";
-import "froala-editor/css/froala_style.min.css";
-import { useEffect, useRef, useState } from "react";
-import FroalaEditorComponent from "react-froala-wysiwyg";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { toast } from "react-hot-toast";
-import Select from "react-select";
+import axios from "axios";
 import "./AddProduct.css";
+import Select from "react-select";
+import "froala-editor/css/froala_style.min.css";
+import "froala-editor/css/froala_editor.pkgd.min.css";
+import FroalaEditorComponent from "react-froala-wysiwyg";
 
 import { FaXmark } from "react-icons/fa6";
 

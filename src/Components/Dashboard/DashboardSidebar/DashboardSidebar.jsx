@@ -1,11 +1,12 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import logo from "@/assets/img/abc-logo-icon.svg";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
 import DashboardActiveLink from "../DashboardActiveLink/DashboardActiveLink";
 import DashboardSubmenu from "../DashboardSubmenu/DashboardSubmenu";
+import Navigate from "@/Components/Shared/Navigate/Navigate";
 
 const DashboardSidebar = () => {
   const path = usePathname();
@@ -335,9 +336,10 @@ const DashboardSidebar = () => {
                 <DashboardSubmenu
                   handleSubmenuToggle={handleSubmenuToggle}
                   submenuItems={[
-                    { title: "HERO SLIDER", href: "/dashboard/hero-slider" },
+                    { title: "ORDERS", href: "/dashboard/orders" },
+                    { title: "INVOICES", href: "/dashboard/invoices" },
                   ]}
-                  submenuTitle={"SLIDERS"}
+                  submenuTitle={"ORDERS"}
                   icon={
                     <svg
                       width="44"
@@ -360,10 +362,10 @@ const DashboardSidebar = () => {
 
                 <DashboardSubmenu
                   handleSubmenuToggle={handleSubmenuToggle}
-                  submenuTitle={"REPORTS"}
                   submenuItems={[
-                    { title: "ADD REPORT", href: "/dashboard/add-report" },
+                    { title: "HERO SLIDER", href: "/dashboard/hero-slider" },
                   ]}
+                  submenuTitle={"SLIDERS"}
                   icon={
                     <svg
                       width="44"
