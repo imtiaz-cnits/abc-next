@@ -15,11 +15,8 @@ import UserContextProvider from "@/Utilities/Contexts/UserContextProvider";
 import { Toaster } from "react-hot-toast"; // Import Toaster
 import "./globals.css";
 import CartContextProvider from "@/Utilities/Contexts/CartContextProvider";
-<<<<<<< HEAD
 import PlaceOrderContextProvider from "@/Utilities/Contexts/PlaceOrderContextProvider";
 import FloatingCart from "@/Components/Shared/FloatingCart/FloatingCart";
-=======
->>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
 
 
 export const metadata = {
@@ -38,7 +35,6 @@ export default function RootLayout({ children }) {
         <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet" />
       </head>
       <body>
-<<<<<<< HEAD
         <UserContextProvider>
           <CartContextProvider>
             <PlaceOrderContextProvider>
@@ -53,19 +49,6 @@ export default function RootLayout({ children }) {
                 <Preloader />
               </QuickViewContextProvider>
             </PlaceOrderContextProvider>
-=======
-      <UserContextProvider>
-          <CartContextProvider>
-            <QuickViewContextProvider>
-              <Navbar />
-              {children}
-              <Footer />
-              <BackToTop />
-              <JavascriptClient />
-              <Toaster />
-              <Preloader />
-            </QuickViewContextProvider>
->>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
           </CartContextProvider>
         </UserContextProvider>
       </body>

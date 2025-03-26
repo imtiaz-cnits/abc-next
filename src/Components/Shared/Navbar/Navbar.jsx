@@ -15,11 +15,7 @@ const Navbar = () => {
 
   const searchRef = useRef(null)
 
-<<<<<<< HEAD
   const { cart, removeFromCart, increaseQuantity, decreaseQuantity, subTotal } = useContext(CartContext)
-=======
-  const {cart, removeFromCart, increaseQuantity, decreaseQuantity, subTotal} = useContext(CartContext)
->>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
 
   const [search, setSearch] = useState(false);
   const [categories, setCategories] = useState([]);
@@ -317,15 +313,9 @@ const Navbar = () => {
               </button>
 
               {searchValue !== "" &&
-<<<<<<< HEAD
                 searchResult ? (
                 filteredProducts.length ? (
                   <div className={`search-result`} ref={searchRef}>
-=======
-              filteredProducts.length !== 0 &&
-              searchResult ? (
-                <div className={`search-result`} ref={searchRef}>
->>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
                   {filteredProducts?.slice(0, 4)?.map((product) => (
                     <a href={`/products/${product?._id}`} key={product?._id}>
                       <div className="search_product_card">
@@ -523,11 +513,7 @@ const Navbar = () => {
 
           <ul className="cart_items">
             {
-<<<<<<< HEAD
               cart?.map((item, idx) => (
-=======
-              cart?.map((item, idx)=>(
->>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
                 <li key={idx}>
                   <div className="product_details_wrapper">
                     <div className="product_item">
@@ -541,33 +527,21 @@ const Navbar = () => {
                         </span>
                         <div className="quantity_wrapper">
                           <div className="wrap">
-<<<<<<< HEAD
                             <button className="btn-decrease" onClick={() => decreaseQuantity(item?.productID)}>-</button>
-=======
-                            <button className="btn-decrease" onClick={()=>decreaseQuantity(item?.productID)}>-</button>
->>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
                             <input
                               type="text"
                               className="quantity-input"
                               value={item?.quantity}
                               readOnly
                             />
-<<<<<<< HEAD
                             <button className="btn-increase" onClick={() => increaseQuantity(item?.productID)}>+</button>
-=======
-                            <button className="btn-increase" onClick={()=> increaseQuantity(item?.productID)}>+</button>
->>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div className="action">
-<<<<<<< HEAD
                     <button className="dlt_btn" onClick={() => removeFromCart(item?.productID)}>
-=======
-                    <button className="dlt_btn" onClick={()=> removeFromCart(item?.productID)}>
->>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
                       <svg
                         width="36"
                         height="36"
@@ -591,11 +565,7 @@ const Navbar = () => {
                     </button>
                   </div>
                 </li>
-<<<<<<< HEAD
               )
-=======
-                )
->>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
               )
             }
           </ul>

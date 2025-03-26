@@ -1,10 +1,6 @@
 "use client"
 
-<<<<<<< HEAD
 import React, { useContext, useEffect, useState } from "react";
-=======
-import React, { useState } from "react";
->>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
 import productImg1 from "@/assets/img/cart-product-img1.webp";
 import productImg2 from "@/assets/img/cart-product-img2.webp";
 import productImg3 from "@/assets/img/cart-product-img3.webp";
@@ -14,7 +10,6 @@ import moment from "moment";
 
 const ThankYou = () => {
 
-<<<<<<< HEAD
   const { order, removeOrder, loading } = useContext(PlaceOrderContext)
   const router = useRouter()
 
@@ -31,8 +26,6 @@ const ThankYou = () => {
     return router.push("/")
   }
 
-=======
->>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
   return (
     <>
       {/* <!-- Billing Details Start --> */}
@@ -57,11 +50,7 @@ const ThankYou = () => {
                 />
               </svg>
             </div>
-<<<<<<< HEAD
             <a href="#" onClick={handleBackToHome}>Back To Home</a>
-=======
-            <a href="/">Back To Home</a>
->>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
           </div>
 
           <div className="thank_you_summery">
@@ -129,62 +118,16 @@ const ThankYou = () => {
                           </div>
                         </div>
                       </div>
-<<<<<<< HEAD
                       <div>
                         <span className="price"> ৳{(product?.productID?.discountPrice || product?.productID?.price).toLocaleString(2)} </span>
                       </div>
                     </li>))
                 }
-=======
-                    </div>
-                  </div>
-                  <div>
-                    <span className="price"> ৳149.99 </span>
-                  </div>
-                </li>
-                <li>
-                  <div className="product_details_wrapper">
-                    <div className="product_item">
-                      <img src={productImg2.src} alt="" />
-                    </div>
-                    <div className="item">
-                      <span className="title">MSI- Gaming Case</span>
-                      <div className="type_wrap_container">
-                        <h2 className="type_wrap">
-                          Gaming Case<span>1×</span>
-                        </h2>
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <span className="price"> ৳139.99 </span>
-                  </div>
-                </li>
-                <li>
-                  <div className="product_details_wrapper">
-                    <div className="product_item">
-                      <img src={productImg3.src} alt="" />
-                    </div>
-                    <div className="item">
-                      <span className="title">CAUGAR- Gaming Headphone</span>
-                      <div className="type_wrap_container">
-                        <h2 className="type_wrap">
-                          Headphone<span>1×</span>
-                        </h2>
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <span className="price">৳54.00</span>
-                  </div>
-                </li>
->>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
               </ul>
             </div>
 
             <div className="order_summary mt-4">
               <p className="summary_item">
-<<<<<<< HEAD
                 <span>Sub-Total</span> <span className="price1">৳{order?.payment?.subTotal}</span>
               </p>
               <p className="summary_item">
@@ -193,22 +136,6 @@ const ThankYou = () => {
               <p className="summary_item">
                 <span className="grand">Grand Total</span>
                 <span className="grand_price">৳{order?.payment?.grandTotal}</span>
-=======
-                <span>Sub-Total</span> <span className="price1">৳343.98</span>
-              </p>
-              <p className="summary_item">
-                <span>Taxes</span> <span className="price">-৳5.00</span>
-              </p>
-              <p className="summary_item">
-                <span>Discount</span> <span className="price">-৳0</span>
-              </p>
-              <p className="summary_item">
-                <span>Shipment Cost</span> <span className="price">৳22.50</span>
-              </p>
-              <p className="summary_item">
-                <span className="grand">Grand Total</span>
-                <span className="grand_price">৳371.48</span>
->>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
               </p>
             </div>
           </div>

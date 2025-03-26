@@ -9,10 +9,7 @@ import ProductQuickModal from "@/Components/Shared/ProductQuickModal/ProductQuic
 import "../../../assets/css/product.css";
 import Breadcrumb from "@/Components/Shared/Breadcrumb/Breadcrumb";
 import { usePathname } from "next/navigation";
-<<<<<<< HEAD
 import { CartContext } from "@/Utilities/Contexts/CartContextProvider";
-=======
->>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
 
 const AllProducts = ({ catId }) => {
   const [filterPrice, setFilterPrice] = useState(0);

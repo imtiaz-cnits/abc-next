@@ -7,10 +7,7 @@ import "swiper/css";
 import { Autoplay, Navigation } from "swiper/modules";
 import ProgressBar from "@ramonak/react-progress-bar";
 import { QuickViewContext } from "@/Utilities/Contexts/QuickViewContextProvider";
-<<<<<<< HEAD
 import { CartContext } from "@/Utilities/Contexts/CartContextProvider";
-=======
->>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
 
 const Specials = () => {
   const [products, setProducts] = useState([]);
@@ -113,15 +110,9 @@ const Specials = () => {
                               />
                             </svg>
                           </a>
-<<<<<<< HEAD
                           <button
                             className="icon"
                             onClick={() => directAddToCart(product?._id, product?.stock)}
-=======
-                          <a
-                            href={`/products/${product?._id}`}
-                            className="icon"
->>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
                           >
                             <svg
                               height="32"
@@ -157,11 +148,7 @@ const Specials = () => {
                                 </clipPath>
                               </defs>
                             </svg>
-<<<<<<< HEAD
                           </button>
-=======
-                          </a>
->>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
                           <a href="./product-single.html" className="icon">
                             <svg
                               width="36"
@@ -180,15 +167,9 @@ const Specials = () => {
                       </div>
 
                       <div className="product_details">
-<<<<<<< HEAD
                         <a href={`/products/${product?._id}`}>
                           <h3 className="product_name">{product?.productName}</h3>
                         </a>
-=======
-                        <h3 className="product_name">
-                          {product?.productName}
-                        </h3>
->>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
                         <div className="price">
                           <span>৳{product?.discountPrice?.toLocaleString(2)}</span>
                           <span>৳{product?.price?.toLocaleString(2)}</span>
@@ -204,19 +185,6 @@ const Specials = () => {
                                 <h4 className="item_label cell auto">
                                   Available: {product?.stock}
                                 </h4>
-<<<<<<< HEAD
-=======
-                              </div>
-                              <div className="item_bar cell">
-                                <ProgressBar
-                                  completed={45}
-                                  bgColor="#e31736"
-                                  height="10px"
-                                  isLabelVisible={false}
-                                  baseBgColor="#e2e2e2"
-                                  animateOnRender
-                                />
->>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
                               </div>
                             </div>
                           </div>

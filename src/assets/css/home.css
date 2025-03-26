@@ -1316,11 +1316,7 @@ body {
   gap: 10px;
   background: #fff;
   transition: 0.4s;
-<<<<<<< HEAD
   border: 1px solid var(--border-color3);
-=======
-  box-shadow: rgba(99, 99, 99, 0.11) 0px 2px 8px 0px;
->>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
 }
 
 #categories .catagories_image {
@@ -1421,15 +1417,7 @@ body {
   border: 1px solid transparent;
   border-radius: 12px;
   transition: 0.4s;
-<<<<<<< HEAD
-=======
-  box-shadow: rgba(99, 99, 99, 0.11) 0px 2px 8px 0px;
-}
-
-.populer_product_card:hover {
->>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
   border: 1px solid var(--border-color3);
-  box-shadow: none;
 }
 
 .populer_product_card .product {

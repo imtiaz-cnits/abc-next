@@ -3,10 +3,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { QuickViewContext } from "@/Utilities/Contexts/QuickViewContextProvider";
-<<<<<<< HEAD
 import { CartContext } from "@/Utilities/Contexts/CartContextProvider";
-=======
->>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
 
 const PopularProducts = () => {
   const [products, setProducts] = useState([]);
@@ -89,12 +86,7 @@ const PopularProducts = () => {
                                 />
                               </svg>
                             </a>
-<<<<<<< HEAD
                             <button
-=======
-                            <a
-                              href={`/products/${product?._id}`}
->>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
                               className="icon"
                               onClick={()=> directAddToCart(product?._id, product?.stock)}
                             >
@@ -133,11 +125,7 @@ const PopularProducts = () => {
                                   </clipPath>
                                 </defs>
                               </svg>
-<<<<<<< HEAD
                             </button>
-=======
-                            </a>
->>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
                             <a href="./product-single.html" className="icon">
                               <svg
                                 width="36"
