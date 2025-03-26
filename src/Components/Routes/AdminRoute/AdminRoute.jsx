@@ -43,7 +43,6 @@ const AdminRoute = ({ children }) => {
       } catch (error) {
         setIsAdmin(false);
         setIsLoading(false);
-        console.log(error);
       }
     };
 

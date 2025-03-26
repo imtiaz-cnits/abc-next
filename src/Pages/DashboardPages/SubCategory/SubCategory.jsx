@@ -73,35 +73,10 @@ const SubCategory = () => {
     fetchSubCategory();
   }, [limit]);
 
-  useEffect(() => {
-    console.log(subCategories);
-  }, [subCategories]);
 
   useEffect(() => {
     setTotalPages(Math.ceil(subCategories.length / limit));
   }, [subCategories, limit]);
-
-  // useEffect(() => {
-  //   // Check if selectedSubCategory exists and contains a categoryId
-  //   if (selectedSubCategory && selectedSubCategory.categoryId) {
-  //     // Find the category based on categoryId
-  //     const category = categories.find(
-  //       (cat) => cat._id === selectedSubCategory?.categoryId?._id
-  //     );
-
-  //     if (category) {
-  //       console.log("Category is correctly bound with subcategory:", category);
-  //       // Update the selected category state
-  //       setSelectedCategory(category);
-  //     } else {
-  //       console.log("No matching category found for the subcategory.");
-  //       setSelectedCategory(null); // Reset the selected category if no match is found
-  //     }
-  //   } else {
-  //     // Reset selectedCategory if no categoryId exists
-  //     setSelectedCategory(null);
-  //   }
-  // }, [selectedSubCategory, categories]); // Run when selectedSubCategory or categories change
 
   useEffect(() => {
     // ..............Table searchbar filter Start.......................//

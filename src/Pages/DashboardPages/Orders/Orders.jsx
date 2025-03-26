@@ -32,9 +32,6 @@ const Orders = () => {
             try {
                 const response = await axios.get("https://api.abcpabnabd.com/api/v1/order-list");
 
-
-                console.log(response.data.data);
-
                 setOrders(response.data.data || []);
                 setTotalItems(response?.data?.data.length);
             } catch (error) {

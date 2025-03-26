@@ -136,8 +136,6 @@ const Checkout = () => {
     e.preventDefault();
     setLoading(true);
 
-    console.log(loginFormData);
-
     try {
       const response = await axios.post(
         "https://api.abcpabnabd.com/api/v1/Login",

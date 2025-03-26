@@ -57,14 +57,10 @@ const UserProfile = () => {
 
   useEffect(() => {
 
-    console.log(existingUserID);
-
     const fetchProfile = async () => {
       const result = await axios.get(
         `https://api.abcpabnabd.com/api/v1/profile-details/${existingUserID}`
       );
-
-      console.log(result);
 
       if (result?.data?.status === "success") {
         setProfile(result?.data?.data);
