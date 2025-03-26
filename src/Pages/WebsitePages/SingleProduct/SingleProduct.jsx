@@ -24,18 +24,27 @@ import "swiper/css";
 import { FreeMode, Thumbs } from "swiper/modules";
 import { CartContext } from "@/Utilities/Contexts/CartContextProvider";
 import toast from "react-hot-toast";
+<<<<<<< HEAD
 import { useRouter } from "next/navigation";
 
 const SingleProduct = ({ id }) => {
 
   const router = useRouter()
 
+=======
+
+const SingleProduct = ({ id }) => {
+>>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
   const [productDetails, setProductDetails] = useState({});
   const product = productDetails?.productID;
   const [selectedColor, setSelectedColor] = useState("");
   const [colorSelected, setColorSelected] = useState(true)
 
+<<<<<<< HEAD
   const {addToCart} = useContext(CartContext)
+=======
+  const {cart, setCart, addToCart} = useContext(CartContext)
+>>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
 
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const [quantity, setQuantity] = useState(1)
@@ -93,6 +102,7 @@ const SingleProduct = ({ id }) => {
     }
 
     addToCart(cartItem)
+<<<<<<< HEAD
   }
 
   const handleBuyNow = () =>{
@@ -119,6 +129,10 @@ const SingleProduct = ({ id }) => {
     addToCart(cartItem)
 
     router.push("/cart")
+=======
+
+    toast.success("Added to cart!");
+>>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
   }
 
   return (
@@ -182,7 +196,11 @@ const SingleProduct = ({ id }) => {
                         <span className="available">Available</span>
                         <p
                             className={`in_stock ${
+<<<<<<< HEAD
                                 product?.stock === 0 ? "text-danger" :""
+=======
+                                product?.stock <= 0 ? "text-danger" :""
+>>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
                             }`}
                         >
                           : {" "}
@@ -208,6 +226,7 @@ const SingleProduct = ({ id }) => {
                     </div>
                   </div>
 
+<<<<<<< HEAD
 
                     {
                       product?.stock !== 0 ? <>
@@ -289,6 +308,84 @@ const SingleProduct = ({ id }) => {
                       : 
                       <></>
                     }
+=======
+                  {
+                     product?.color?.length ? (
+                     <>
+                       <div className="select_color_custom">
+                         <label>Select Color: {selectedColor}</label>
+                         <div className="color_btn_container">
+                           {product?.color?.map((color, idx) => (
+                             <button
+                               onClick={() => setSelectedColor(color)}
+                               key={idx}
+                               className={`color_btn ${
+                                 selectedColor === color ? "active" : ""
+                               }`}
+                             >
+                               {color}
+                             </button>
+                           ))}
+ 
+                           <button
+                             onClick={() => setSelectedColor("")}
+                             className={`color_btn`}
+                           >
+                             <LiaTimesSolid />
+                           </button>
+                         </div>
+                         {
+                           !colorSelected ? <span className="text-danger">*Select color first!</span> : <></>
+                         }
+                       </div>
+                     </>
+                     ) : <></>
+                   }
+
+                  <div className="action_buttons_custom">
+                    <div className="quantity_wrapper">
+                      <div className="quantity_custom">
+                        <button
+                          type="button"
+                          className="btn-decrease"
+                          onClick={() => decreaseQuantity()}
+                        >
+                          -
+                        </button>
+                        <input
+                          type="number"
+                          id="quantity"
+                          min="1"
+                          value={quantity}
+                          onChange={(e)=>setQuantity(e.target.value)}
+                        />
+                        <button
+                          type="button"
+                          className="btn-increase"
+                          onClick={() => increaseQuantity()}
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
+
+                    <div className="button_wrapper">
+                       <button className="add_to_cart" onClick={handleAddToCart}>
+                         Add to Cart
+                       </button>
+                       <button className="buy_now">
+                         Buy Now
+                       </button>
+                     </div>
+                  </div>
+
+                  <div className="gift_receipt_custom">
+                    <label>
+                      <input type="checkbox" />
+                      <span>Add a gift receipt for easy returns</span>
+                    </label>
+                  </div>
+>>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
                 </div>
               </div>
             </div>

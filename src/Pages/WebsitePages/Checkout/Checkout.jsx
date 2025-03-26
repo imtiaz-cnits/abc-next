@@ -6,7 +6,10 @@ import paymentImg from "@/assets/img/payment.png"
 import bkashImg from "@/assets/img/payment-bkash.png"
 import nagadImg from "@/assets/img/payment-nagad.png"
 import bankImg from "@/assets/img/payment-bank.png"
+<<<<<<< HEAD
 import QRImg from "@/assets/img/QR.png"
+=======
+>>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
 
 import modalBkash from '@/assets/img/bkash.png';
 import bracBankimg from "@/assets/img/Bracbank.png"
@@ -18,6 +21,7 @@ import axios from "axios";
 import { CartContext } from "@/Utilities/Contexts/CartContextProvider";
 import logo from "@/assets/img/abc-logo-icon.png"
 import { FaRegCopy } from "react-icons/fa";
+<<<<<<< HEAD
 import { PlaceOrderContext } from "@/Utilities/Contexts/PlaceOrderContextProvider";
 import { useRouter } from "next/navigation";
 
@@ -40,6 +44,27 @@ const Checkout = () => {
 
   // Form values
 
+=======
+
+const Checkout = () => {
+
+  const {existingUserID} = useContext(UserContext)
+
+  const {cart, subTotal, deliveryCharge, grandTotal} = useContext(CartContext)
+  const bankAccount = 546746449874
+
+  const { setUserID } = useContext(UserContext);
+  const [stateOptions, setStateOptions] = useState([]);
+  const [paymentOption, setPaymentOption] = useState("bkash")
+  const [loginModal, setLoginModal] = useState(false)
+  const [paymentModal, setPaymentModal] = useState(false)
+  const [login, setLogin] = useState(true)
+  const [showPassword, setShowPassword] = useState(false);
+  const [acceptedTerms, setAcceptedTerms] = useState(false);
+
+  // Form values
+
+>>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
   const [name, setName] = useState("")
   const [address, setAddress] = useState("")
   const [city, SetCity] = useState("")
@@ -70,7 +95,11 @@ const Checkout = () => {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
 
   // const handleCountryChange = (e) => {
   //   const selectedCountryIndex = e.target.value;
@@ -170,7 +199,11 @@ const Checkout = () => {
       console.error("❌ Login Error:", error);
       toast.error(
         error?.response?.data?.message ||
+<<<<<<< HEAD
         "Login failed! Please check your credentials."
+=======
+          "Login failed! Please check your credentials."
+>>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
       );
     } finally {
       setLoading(false);
@@ -178,6 +211,7 @@ const Checkout = () => {
   };
 
 
+<<<<<<< HEAD
   const handleCheckout = (e) => {
 
     setError({})
@@ -196,6 +230,26 @@ const Checkout = () => {
 
     if (phone === "") {
       return setError({ id: "phone", error: "Phone Number is required!" })
+=======
+  const handleCheckout = (e) =>{
+
+    setError({})
+
+    if(name === ""){
+      return setError({id: "name", error: "Full Name is required!"})
+    }
+
+    if(address === ""){
+      return setError({id: "address", error: "Address is required!"})
+    }
+
+    if(city === ""){
+      return setError({id: "city", error: "City is required!"})
+    }
+
+    if(phone === ""){
+      return setError({id: "phone", error: "Phone Number is required!"})
+>>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
     }
 
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -206,21 +260,29 @@ const Checkout = () => {
       return setError({ id: "email", error: "Invalid email address!" });
     }
 
+<<<<<<< HEAD
     if (city === "") {
       return setError({ id: "city", error: "City is required!" })
     }
 
+=======
+>>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
 
     setPaymentModal(true)
 
   }
 
+<<<<<<< HEAD
   const handlePayNow = async () => {
+=======
+  const handlePayNow = () => {
+>>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
 
 
     setError({})
 
 
+<<<<<<< HEAD
     if (paymentOption !== "bank") {
       if ((tranID === "")) {
         return setError({ id: "transaction", error: "Transaction ID is required!" })
@@ -228,6 +290,15 @@ const Checkout = () => {
     } else if (paymentOption === "bank") {
       if ((cusBankAccount === "")) {
         return setError({ id: "bankAccount", error: "Bank account is required!" })
+=======
+    if(paymentOption !== "bank"){
+      if((tranID === "")){
+        return setError({id: "transaction", error: "Transaction ID is required!"})
+      }
+    } else if(paymentOption === "bank"){
+      if((cusBankAccount === "")){
+        return setError({id: "bankAccount", error: "Bank account is required!"})
+>>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
       }
     }
 
@@ -235,17 +306,26 @@ const Checkout = () => {
     const products = cart?.map(prod => {
 
       const checkoutOrder = {
+<<<<<<< HEAD
         productID: prod?.productID,
         qty: prod?.quantity,
       }
 
       if (prod?.color) {
+=======
+        productID:  prod?.productID,
+        qty: prod?.quantity,
+      }
+
+      if(prod?.color){
+>>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
         checkoutOrder.color = prod?.color
       }
 
       return checkoutOrder
     })
 
+<<<<<<< HEAD
     const discount = 0;
 
     const orderData = {
@@ -306,6 +386,52 @@ const Checkout = () => {
     } catch (err) {
       console.error("Failed to copy:", err);
     }
+=======
+    const orderDetails = {
+      cus_name: name,
+      cus_address: address,
+      cus_phone: phone,
+      cus_email: email,
+      cus_city: city,
+      order_notes: notes,
+      pay_method: paymentOption,
+      products,
+      subTotal,
+      grandTotal,
+    }
+
+    if(paymentOption !== "bank"){
+      orderDetails.tranID = tranID
+    } else if(paymentOption === "bank"){
+      orderDetails.cus_bank_account = cusBankAccount
+    }
+
+
+    console.log(orderDetails);
+
+
+    setName("")
+    setAddress("")
+    SetCity("")
+    setPhone("")
+    setEmail("")
+    setNotes("")
+    setTranID("")
+    setError({})
+    setCusBankAccount("")
+    setPaymentModal(false)
+
+  }
+
+
+  const copyBankAccount = async() => {
+      try {
+        await navigator.clipboard.writeText(bankAccount);
+        toast.success("Account Number Copied")
+      } catch (err) {
+        console.error("Failed to copy:", err);
+      }
+>>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
   }
 
   return (
@@ -350,6 +476,7 @@ const Checkout = () => {
                       id="name"
                       placeholder="Full name"
                       value={name}
+<<<<<<< HEAD
                       onChange={(e) => setName(e.target.value)}
                     />
                     {
@@ -357,6 +484,15 @@ const Checkout = () => {
                         <span className="error-message">* {error?.error}</span>
                         :
                         <></>
+=======
+                      onChange={(e)=>setName(e.target.value)}
+                    />
+                    {
+                      error?.id === "name" ? 
+                      <span className="error-message">* {error?.error}</span>
+                      :
+                      <></>
+>>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
                     }
                   </div>
                   <div className="form_group">
@@ -370,11 +506,19 @@ const Checkout = () => {
                       value={address}
                       onChange={(e) => setAddress(e.target.value)}
                     />
+<<<<<<< HEAD
                     {
                       error?.id === "address" ?
                         <span className="error-message">* {error?.error}</span>
                         :
                         <></>
+=======
+                                        {
+                      error?.id === "address" ? 
+                      <span className="error-message">* {error?.error}</span>
+                      :
+                      <></>
+>>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
                     }
                   </div>
                   <div className="form_group">
@@ -386,6 +530,7 @@ const Checkout = () => {
                       id="phone"
                       placeholder="Phone number"
                       value={phone}
+<<<<<<< HEAD
                       onChange={(e) => setPhone(e.target.value)}
                     />
                     {
@@ -393,6 +538,15 @@ const Checkout = () => {
                         <span className="error-message">* {error?.error}</span>
                         :
                         <></>
+=======
+                      onChange={(e)=> setPhone(e.target.value)}
+                    />
+                                        {
+                      error?.id === "phone" ? 
+                      <span className="error-message">* {error?.error}</span>
+                      :
+                      <></>
+>>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
                     }
                   </div>
                   <div className="form_group">
@@ -406,23 +560,40 @@ const Checkout = () => {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                     />
+<<<<<<< HEAD
                     {
                       error?.id === "email" ?
                         <span className="error-message">* {error?.error}</span>
                         :
                         <></>
+=======
+                                        {
+                      error?.id === "email" ? 
+                      <span className="error-message">* {error?.error}</span>
+                      :
+                      <></>
+>>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
                     }
                   </div>
                   <div className="form_group">
                     <label htmlFor="city">
                       Town / City<span>*</span>
                     </label>
+<<<<<<< HEAD
                     <input type="text" id="city" placeholder="Town/City" value={city} onChange={(e) => SetCity(e.target.value)} />
                     {
                       error?.id === "city" ?
                         <span className="error-message">* {error?.error}</span>
                         :
                         <></>
+=======
+                    <input type="text" id="city" placeholder="Town/City" value={city} onChange={(e)=> SetCity(e.target.value)} />
+                    {
+                      error?.id === "city" ? 
+                      <span className="error-message">* {error?.error}</span>
+                      :
+                      <></>
+>>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
                     }
                   </div>
                   <div className="form_group">
@@ -431,7 +602,11 @@ const Checkout = () => {
                       id="order-notes"
                       placeholder="Notes about your order, e.g. special notes for delivery"
                       value={notes}
+<<<<<<< HEAD
                       onChange={(e) => setNotes(e.target.value)}
+=======
+                      onChange={(e)=> setNotes(e.target.value)}
+>>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
                     ></textarea>
                   </div>
                 </form>
@@ -447,7 +622,11 @@ const Checkout = () => {
                       name="payment"
                       id="bkash"
                       checked={paymentOption === "bkash"}
+<<<<<<< HEAD
                       onChange={(e) => setPaymentOption(e.target.value)}
+=======
+                      onChange={(e)=>setPaymentOption(e.target.value)}
+>>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
                       value={"bkash"}
                     />
                     <label htmlFor="bkash">
@@ -457,7 +636,11 @@ const Checkout = () => {
                       </span>
                     </label>
                   </div>
+<<<<<<< HEAD
                   {/* {
+=======
+                    {/* {
+>>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
                       paymentOption === "bkash" ?
                       <>
                       <input
@@ -480,7 +663,11 @@ const Checkout = () => {
                 </div>
                 <div className="payment_option">
                   <div className="radio-container">
+<<<<<<< HEAD
                     <input type="radio" name="payment" id="nagad" checked={paymentOption === "nagad"} onChange={(e) => setPaymentOption(e.target.value)} value={"nagad"} />
+=======
+                    <input type="radio" name="payment" id="nagad" checked={paymentOption === "nagad"} onChange={(e)=>setPaymentOption(e.target.value)} value={"nagad"}/>
+>>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
                     <label htmlFor="nagad">
                       <span className="details">
                         <strong>Nagad</strong>
@@ -488,7 +675,11 @@ const Checkout = () => {
                       </span>
                     </label>
                   </div>
+<<<<<<< HEAD
                   {/* {
+=======
+                    {/* {
+>>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
                       paymentOption === "nagad" ?
                       <><input
                         type="text"
@@ -513,7 +704,11 @@ const Checkout = () => {
                 </div>
                 <div className="payment_option">
                   <div className="radio-container">
+<<<<<<< HEAD
                     <input type="radio" name="payment" id="bank" checked={paymentOption === "bank"} onChange={(e) => setPaymentOption(e.target.value)} value={"bank"} />
+=======
+                    <input type="radio" name="payment" id="bank" checked={paymentOption === "bank"} onChange={(e)=>setPaymentOption(e.target.value)} value={"bank"}/>
+>>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
                     <label htmlFor="bank">
                       <span className="details">
                         <strong>Bank</strong>
@@ -533,7 +728,11 @@ const Checkout = () => {
                   </div>
                   <ul className="cart_items">
                     {
+<<<<<<< HEAD
                       cart?.map((item, idx) => (
+=======
+                      cart?.map((item, idx)=>(
+>>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
                         <li key={idx}>
                           <div className="product_details_wrapper">
                             <div className="product_item">
@@ -568,6 +767,7 @@ const Checkout = () => {
                 <div className="order_summary">
                   <p className="summary_item">
                     <span>Sub-Total</span>{" "}
+<<<<<<< HEAD
                     <span className="price1">৳{subTotal?.toLocaleString()}</span>
                   </p>
                   <p className="summary_item">
@@ -576,6 +776,20 @@ const Checkout = () => {
                   <p className="summary_item">
                     <span className="grand">Grand Total</span>
                     <span className="grand_price">৳{grandTotal?.toLocaleString()}</span>
+=======
+                    <span className="price1">৳{subTotal}</span>
+                  </p>
+                  <p className="summary_item">
+                    <span>Discount</span> <span className="price">-৳0</span>
+                  </p>
+                  <p className="summary_item">
+                    <span>Delivery Cost</span>{" "}
+                    <span className="price">৳{deliveryCharge}</span>
+                  </p>
+                  <p className="summary_item">
+                    <span className="grand">Grand Total</span>
+                    <span className="grand_price">৳{grandTotal}</span>
+>>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
                   </p>
                   <button className="continue_btn" onClick={handleCheckout}>
                     Checkout Now
@@ -591,6 +805,7 @@ const Checkout = () => {
                       centered
                     >
                       <Modal.Body>
+<<<<<<< HEAD
                         <div className="container sign-in-signup-container">
                           {/* <!-- Sign in Form Start --> */}
                           <div
@@ -765,6 +980,182 @@ const Checkout = () => {
                           </div>
                           {/* <!-- Registration Form End --> */}
                         </div>
+=======
+                      <div className="container sign-in-signup-container">
+                        {/* <!-- Sign in Form Start --> */}
+                        <div
+                          className="login"
+                          style={{ display: `${login ? "block" : "none"}` }}
+                        >
+                          <div>
+                            <h2>Account Login</h2>
+                            <form className="login-form" onSubmit={handleLoginSubmit}>
+                              <div className="input-row">
+                                <div className="input-field">
+                                  <label htmlFor="loginEmail">Email</label>
+                                  <input
+                                    type="email"
+                                    id="loginEmail"
+                                    name="email"
+                                    placeholder="Enter a email"
+                                    onChange={handleLoginChange}
+                                    required
+                                  />
+                                </div>
+                              </div>
+
+                              <div className="input-row">
+                                <div className="input-field">
+                                  <label htmlFor="loginPassword">
+                                    Password
+                                    <input
+                                      type={showPassword ? "text" : "password"} // Toggle password visibility
+                                      id="loginPassword"
+                                      name="password"
+                                      placeholder="Enter password"
+                                      onChange={handleLoginChange}
+                                      required
+                                      className="mt-1"
+                                    />
+                                    <a onClick={() => setShowPassword(!showPassword)}>
+                                      <img
+                                        className="hide-icon"
+                                        src={passwordEye.src}
+                                        alt="Toggle Password"
+                                      />
+                                    </a>
+                                  </label>
+                                </div>
+                              </div>
+
+                              <div className="input-row">
+                                <button className="sign-in-btn" type="submit">
+                                  SIGN IN
+                                </button>
+                              </div>
+                            </form>
+                            <div className="switch">
+                              <div>
+                                <span>Don't have an account?</span>
+                                <span className="switch-btn" onClick={() => setLogin(false)}>
+                                  Register Now
+                                </span>
+                              </div>
+                              <span className="forgot">Forgot Password?</span>
+                            </div>
+                          </div>
+                        </div>
+                        {/* <!-- Sign in Form End --> */}
+
+                        {/* <!-- Registration Form Start --> */}
+                        <div
+                          className="register"
+                          style={{ display: `${login ? "none" : "block"}` }}
+                        >
+                          <div>
+                            <h2>Register Account</h2>
+                            <form className="register-form" onSubmit={handleSubmit}>
+                              <div className="input-row">
+                                <div className="input-field">
+                                  <label htmlFor="name">Name</label>
+                                  <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    placeholder="Name"
+                                    onChange={handleChange}
+                                    required
+                                  />
+                                </div>
+                              </div>
+
+                              <div className="input-row">
+                                <div className="input-field">
+                                  <label htmlFor="email">Email</label>
+                                  <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    placeholder="Enter a email"
+                                    onChange={handleChange}
+                                    required
+                                  />
+                                </div>
+                              </div>
+
+                              <div className="input-row">
+                                <div className="input-field">
+                                  <label htmlFor="number">Phone Number</label>
+                                  <input
+                                    type="number"
+                                    id="number"
+                                    name="mobile"
+                                    placeholder="Phone number"
+                                    onChange={handleChange}
+                                    required
+                                  />
+                                </div>
+                              </div>
+
+                              <div className="input-row">
+                                <div className="input-field">
+                                  <label htmlFor="password">
+                                    Password
+                                    <input
+                                      type={showPassword ? "text" : "password"} // Toggle password visibility
+                                      id="password"
+                                      name="password"
+                                      placeholder="Enter password"
+                                      onChange={handleChange}
+                                      required
+                                      className="mt-1"
+                                    />
+                                    <a onClick={() => setShowPassword(!showPassword)}>
+                                      <img
+                                        className="hide-icon"
+                                        src={passwordEye.src}
+                                        alt="Toggle Password"
+                                      />
+                                    </a>
+                                  </label>
+                                </div>
+                              </div>
+
+                              <div className="input-row">
+                                <input
+                                  type="checkbox"
+                                  id="checkbox"
+                                  onChange={() => setAcceptedTerms(!acceptedTerms)}
+                                />
+                                <label htmlFor="checkbox" className="checkbox">
+                                  I accept the{" "}
+                                  <a href={"#"} className="policy">
+                                    Privacy Policy.
+                                  </a>
+                                </label>
+                              </div>
+
+                              <div className="input-row">
+                                <button
+                                  className="sign-up-btn"
+                                  type="submit"
+                                  disabled={!acceptedTerms}
+                                >
+                                  SIGN UP
+                                </button>
+                              </div>
+                            </form>
+                            <div className="switch">
+                              <span>Already have an account?</span>
+                              <span className="switch-btn" onClick={() => setLogin(true)}>
+                                Login Now
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                        {/* <!-- Registration Form End --> */}
+                      </div>
+>>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
                       </Modal.Body>
                     </Modal>
 
@@ -776,7 +1167,11 @@ const Checkout = () => {
                       aria-labelledby="contained-modal-title-vcenter"
                       centered
                     >
+<<<<<<< HEAD
                       <span className="close" onClick={() => setPaymentModal(false)}>&times;</span>
+=======
+                      <span className="close" onClick={()=> setPaymentModal(false)}>&times;</span>
+>>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
                       <div className="modal-logo">
                         <div className="logo">
                           <img src={logo.src} alt="" />
@@ -786,6 +1181,7 @@ const Checkout = () => {
 
                       {
                         paymentOption === "bkash" ? <>
+<<<<<<< HEAD
 
                           <div className="tabs">
                             <div className="tab-buttons">
@@ -826,12 +1222,55 @@ const Checkout = () => {
                               :
                               <></>
                           }
+=======
+                        
+                        <div className="tabs">
+                          <div className="tab-buttons">
+                            <div className="payment-img">
+                              <img src={modalBkash?.src} alt="" />
+                            </div>
+                          </div>
+                          <div className="tab-content">
+                            <div>
+                              <h2>Instructions:</h2>
+                              <p>1. Open Bkash app or dial *247#</p>
+                              <p>2. Select Send Money/ Scan this QR Code</p>
+                              <div className="qr-code">
+                                <div className="qr-img">
+                                  <img src="./assets/img/qr-code.png" alt=""/>
+                                </div>
+                              </div>
+                              <p>
+                                3. Send 2000 BDT to this Number - 017 00 456 234
+                              </p>
+                              <p>4. Enter reference no - your name</p>
+                              <p>5. Get you Transaction ID and enter on below box then click PAY NOW</p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <input
+                          className="transaction"
+                          type="text"
+                          placeholder="Enter your transaction ID"
+                          value={tranID}
+                          onChange={(e)=> setTranID(e.target.value)}
+                        />
+
+                        {
+                          error?.id === "transaction" ? 
+                          <span className="error-message">* {error?.error}</span>
+                          :
+                          <></>
+                        } 
+>>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
 
                         </> : <></>
                       }
 
                       {
                         paymentOption === "nagad" ? <>
+<<<<<<< HEAD
 
                           <div className="tabs">
                             <div className="tab-buttons">
@@ -872,6 +1311,48 @@ const Checkout = () => {
                               :
                               <></>
                           }
+=======
+                        
+                        <div className="tabs">
+                          <div className="tab-buttons">
+                            <div className="payment-img">
+                              <img src={nagadImg?.src} alt="" />
+                            </div>
+                          </div>
+                          <div className="tab-content">
+                            <div>
+                              <h2>Instructions:</h2>
+                              <p>1. Open Bkash app or dial *167#</p>
+                              <p>2. Select Send Money/ Scan this QR Code</p>
+                              <div className="qr-code">
+                                <div className="qr-img">
+                                  <img src="./assets/img/qr-code.png" alt=""/>
+                                </div>
+                              </div>
+                              <p>
+                                3. Send 2000 BDT to this Number - 017 00 456 234
+                              </p>
+                              <p>4. Enter reference no - your name</p>
+                              <p>5. Get you Transaction ID and enter on below box then click PAY NOW</p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <input
+                          className="transaction"
+                          type="text"
+                          placeholder="Enter your transaction ID"
+                          value={tranID}
+                          onChange={(e)=> setTranID(e.target.value)}
+                        />
+
+                        {
+                          error?.id === "transaction" ? 
+                          <span className="error-message">* {error?.error}</span>
+                          :
+                          <></>
+                        } 
+>>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
 
                         </> : <></>
                       }
@@ -879,6 +1360,7 @@ const Checkout = () => {
 
                       {
                         paymentOption === "bank" ? <>
+<<<<<<< HEAD
 
                           <div className="tabs">
                             <div className="tab-buttons">
@@ -919,6 +1401,48 @@ const Checkout = () => {
                               :
                               <></>
                           }
+=======
+                        
+                        <div className="tabs">
+                          <div className="tab-buttons">
+                            <div className="payment-img">
+                              <img src={bracBankimg?.src} alt="" />
+                            </div>
+                          </div>
+                          <div className="tab-content">
+                            <div>
+                              <h2>Instructions:</h2>
+                              <p>1. Transfer the payable amount on our BRAC bank account and input your account number</p>
+                              <div className="account-info">
+                                <p>
+                                  Account Holder Name: <span>ABC Computers</span>
+                                </p>
+                                <p>
+                                  Account Number: <span>{bankAccount}</span> <button className="copy" onClick={copyBankAccount}><FaRegCopy /></button>
+                                </p>
+                                <p>
+                                  Branch: <span>Pabna Branch</span>
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <input
+                          className="transaction"
+                          type="text"
+                          placeholder="Enter Your Account Number"
+                          value={cusBankAccount}
+                          onChange={(e)=> setCusBankAccount(e.target.value)}
+                        />
+
+                        {
+                          error?.id === "bankAccount" ? 
+                          <span className="error-message">* {error?.error}</span>
+                          :
+                          <></>
+                        } 
+>>>>>>> f642bf4891f2ea6180f8334f133a7654e25bfc39
 
                         </> : <></>
                       }
