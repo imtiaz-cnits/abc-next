@@ -23,6 +23,7 @@ const DashboardNavbar = () => {
             const response = await axios.get("https://api.abcpabnabd.com/api/v1/order-list");
 
             setOrders(response.data.data || []);
+            console.log(response.data.data);
         } catch (error) {
             // Improved error handling
             if (error.response) {
