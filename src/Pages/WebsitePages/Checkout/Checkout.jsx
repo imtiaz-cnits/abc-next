@@ -1,25 +1,25 @@
 "use client";
+import React, { useContext, useState } from "react";
 import passwordEye from "@/assets/icons/password-eye-icon.svg";
-import paymentImg from "@/assets/img/payment.png";
-import { useContext, useState } from "react";
+import paymentImg from "@/assets/img/payment.png"
 
-import bankImg from "@/assets/img/payment-bank.png";
-import bkashImg from "@/assets/img/payment-bkash.png";
-import nagadImg from "@/assets/img/payment-nagad.png";
-import QRImg from "@/assets/img/QR.png";
+import bkashImg from "@/assets/img/payment-bkash.png"
+import nagadImg from "@/assets/img/payment-nagad.png"
+import bankImg from "@/assets/img/payment-bank.png"
+import QRImg from "@/assets/img/QR.png"
 
 import modalBkash from '@/assets/img/bkash.png';
-import bracBankimg from "@/assets/img/Bracbank.png";
+import bracBankimg from "@/assets/img/Bracbank.png"
 
-import logo from "@/assets/img/abc-logo-icon.png";
-import { CartContext } from "@/Utilities/Contexts/CartContextProvider";
-import { PlaceOrderContext } from "@/Utilities/Contexts/PlaceOrderContextProvider";
-import { UserContext } from "@/Utilities/Contexts/UserContextProvider";
-import axios from "axios";
-import { useRouter } from "next/navigation";
 import { Modal } from "react-bootstrap";
-import toast from "react-hot-toast";
+import { UserContext } from "@/Utilities/Contexts/UserContextProvider";
+import { toast } from 'sonner'
+import axios from "axios";
+import { CartContext } from "@/Utilities/Contexts/CartContextProvider";
+import logo from "@/assets/img/abc-logo-icon.png"
 import { FaRegCopy } from "react-icons/fa";
+import { PlaceOrderContext } from "@/Utilities/Contexts/PlaceOrderContextProvider";
+import { useRouter } from "next/navigation";
 
 const Checkout = () => {
 
